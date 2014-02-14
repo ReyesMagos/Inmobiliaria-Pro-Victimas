@@ -1,0 +1,287 @@
+<ViewSwitcher xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/profileSwitcher"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:background="@drawable/back"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:orientation="vertical" >
+
+            <RadioButton
+                android:id="@+id/rbArriendos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/etiqueta_arriendo"
+                android:textSize="24sp" />
+
+            <RadioButton
+                android:id="@+id/rbVentas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/etiqueta_venta"
+                android:textSize="24sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/lblDepartamento"
+                    android:layout_width="193dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/etiqueta_departamento"
+                    android:textSize="24sp" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/acDepartamento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/etiqueta_departamento"
+                    android:text=" " >
+
+                    <requestFocus />
+                </AutoCompleteTextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/lblMunicipio"
+                    android:layout_width="193dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/municipio_lbl"
+                    android:textSize="24sp" />
+
+                <Spinner
+                    android:id="@+id/spMunicipio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/lblTipoBien"
+                    android:layout_width="193dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/etiqueta_tipobien"
+                    android:textSize="24sp" />
+
+                <Spinner
+                    android:id="@+id/spTipoBien"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/lblTipoInmueble"
+                    android:layout_width="193dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/etiqueta_tipoinmueble"
+                    android:textSize="24sp" />
+
+                <Spinner
+                    android:id="@+id/spInmueble"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/lblUsodelBien"
+                    android:layout_width="193dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/etiqueta_usobien"
+                    android:textSize="24sp" />
+
+                <Spinner
+                    android:id="@+id/spUsodelBien"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/lblnumerobanos"
+                    android:layout_width="193dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/etiqueta_numerobanos"
+                    android:textSize="24sp" />
+
+                <Spinner
+                    android:id="@+id/spnumerobanos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/lblnumerohabitacion"
+                    android:layout_width="193dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/etiqueta_numerohabitaciones"
+                    android:textSize="24sp" />
+
+                <Spinner
+                    android:id="@+id/spnumerohabitaciones"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/lblvalor"
+                    android:layout_width="193dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/etiqueta_valor"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/txtValor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Text"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/btnMostar"
+                android:layout_width="125dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center_horizontal"
+                android:onClick="btnMostrarClick"
+                android:src="@drawable/btnbuscar" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:background="@drawable/back"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:orientation="vertical" >
+
+            <RadioButton
+                android:id="@+id/rbArriendos2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/etiqueta_arriendo"
+                android:textSize="24sp" />
+
+            <RadioButton
+                android:id="@+id/rbVentas2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/etiqueta_venta"
+                android:textSize="24sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/lblTipoBien2"
+                    android:layout_width="193dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/etiqueta_tipobien"
+                    android:textSize="24sp" />
+
+                <Spinner
+                    android:id="@+id/spTipoBien2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/lblUbicacion"
+                    android:layout_width="193dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/etiqueta_tipoinmueble"
+                    android:textSize="24sp" />
+
+                <Spinner
+                    android:id="@+id/spUbicacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/lblvalor2"
+                    android:layout_width="193dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/etiqueta_valor"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/txtValor2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Large Text"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/btnMostar"
+                android:layout_width="125px"
+                android:layout_height="75px"
+                android:layout_gravity="center_horizontal"
+                android:onClick="btnMostrarClick"
+                android:src="@drawable/btnbuscar" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ViewSwitcher>

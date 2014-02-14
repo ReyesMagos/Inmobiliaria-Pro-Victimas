@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="co.gov.dps.inmovic.presentacion.actividades.destacados"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+
+    <permission
+        android:name="co.gov.dps.inmovic.presentacion.actividades.destacados.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.example.tabss.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icono_tamano_grande"
+        android:label="@string/app_name"
+        android:theme="@style/customActionBarTheme" >
+        <receiver android:name="co.gov.dps.inmovic.presentacion.actividades.destacados.UpdateReceive" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyBi_XFF7ekx2LWHsF8s9lsPsPAsqTFkuG8" />
+
+        <activity
+            android:name="co.gov.dps.inmovic.presentacion.vistas.destacados.Destacados_main"
+            android:label="InmoVic"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="co.gov.dps.inmovic.presentacion.vistas.destacados.Formulario"
+            android:label="InmoVic"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="co.gov.dps.inmovic.presentacion.vistas.vistabien.Comentario"
+            android:label="InmoVic"
+            android:parentActivityName="co.gov.dps.inmovic.presentacion.vistas.vistabien.Resultados"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="co.gov.dps.inmovic.presentacion.vistas.vistabien.Resultados" />
+        </activity>
+        <activity
+            android:name="co.gov.dps.inmovic.presentacion.vistas.busqueda.Busqueda"
+            android:label="@string/title_activity_busqueda"
+            android:parentActivityName="co.gov.dps.inmovic.presentacion.vistas.busqueda.SeleccionarTipoBusqueda"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="co.gov.dps.inmovic.presentacion.vistas.busqueda.SeleccionarTipoBusqueda" />
+        </activity>
+        <activity
+            android:name="co.gov.dps.inmovic.presentacion.vistas.destacados.Bienvenida"
+            android:label="InmoVic"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="co.gov.dps.inmovic.presentacion.vistas.destacados.DestacadoUI"
+            android:label="InmoVic"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="co.gov.dps.inmovic.presentacion.vistas.destacados.DestacadoUI" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="co.gov.dps.inmovic.presentacion.vistas.destacados.FormularioUI"
+            android:label="InmoVic"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="co.gov.dps.inmovic.presentacion.vistas.vistabien.Resultados"
+            android:label="InmoVic"
+            android:parentActivityName="co.gov.dps.inmovic.presentacion.vistas.busqueda.Busqueda"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.UI_OPTIONS"
+                android:value="splitActionBarWhenNarrow" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="co.gov.dps.inmovic.presentacion.vistas.busqueda.Busqueda" />
+        </activity>
+        <activity
+            android:name="co.gov.dps.inmovic.presentacion.actividades.destacados.Maps"
+            android:label="InmoVic"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="co.gov.dps.inmovic.presentacion.vistas.busqueda.Busqueda2"
+            android:label="@string/title_activity_busqueda2"
+            android:parentActivityName="co.gov.dps.inmovic.presentacion.vistas.busqueda.SeleccionarTipoBusqueda" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="co.gov.dps.inmovic.presentacion.vistas.busqueda.SeleccionarTipoBusqueda" />
+        </activity>
+        <activity
+            android:name="co.gov.dps.inmovic.presentacion.vistas.busqueda.SeleccionarTipoBusqueda"
+            android:label="@string/title_activity_seleccionar_tipo_busqueda"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="co.gov.dps.inmovic.presentacion.actividades.destacados.Acercade"
+            android:label="@string/title_activity_acercade"
+            android:screenOrientation="portrait" >
+        </activity>
+    </application>
+
+</manifest>

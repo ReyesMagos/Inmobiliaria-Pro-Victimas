@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/txtDepto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="30dp"
+        android:layout_y="24dp"
+        android:textSize="12sp"
+        android:text="@string/etiqueta_departamento" />
+
+    <TextView
+        android:id="@+id/txtMunicipio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="35dp"
+        android:layout_y="64dp"
+        android:text="@string/municipio_lbl"
+        android:textSize="12sp" />
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_x="207dp"
+        android:layout_y="2dp" />
+
+    <Spinner
+        android:id="@+id/Spinner01"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_x="207dp"
+        android:layout_y="64dp" />
+
+</AbsoluteLayout>

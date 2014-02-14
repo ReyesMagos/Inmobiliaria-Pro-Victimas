@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">InmoVic</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="ubicacion">Ubicación</string>
+    <string name="title_activity_busqueda">Búsqueda</string>
+    <string name="etiqueta_departamento">Departamento</string>
+    <string name="municipio_lbl">Municipio</string>
+    <string name="btn_aceptar">Aceptar</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_maps">Maps</string>
+    <string name="busqueda">Búsqueda</string>
+    <string name="bienvenida">Bienvenido</string>
+    <string name="carga">Cargando...</string>
+    <string name="Bienvenido">welcome</string>
+    <string name="bienes_destacados">Bienes Destacados</string>
+    <string name="nombreCompleto">Nombre Completo</string>
+    <string name="numDoc">Número Doc.</string>
+    <string name="tel">Teléfono</string>
+    <string name="ciudad">Ciudad/Municipio</string>
+    <string name="estadoCivil">Estado civil</string>
+    <string name="actEconomica">Actividad Económica</string>
+    <string name="correo">E-mail</string>
+    <string name="etiqueta_arriendo">Bienes en Arriendo</string>
+    <string name="etiqueta_venta">Bienes en Venta</string>
+    <string name="etiqueta_tipobien">Tipo Bien</string>
+    <string name="etiqueta_tipoinmueble">Tipo Inmueble</string>
+    <string name="etiqueta_usobien">Uso Bien</string>
+    <string name="etiqueta_numerobanos">Baños</string>
+    <string name="etiqueta_numerohabitaciones">Habitaciones</string>
+    <string name="etiqueta_valor">Valor</string>
+    <string name="app_name">Inmovic</string>
+    <string name="etiqueta_inmuebles">Inmuebles Para Arrendar</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="txtName">Nombre</string>
+    <string name="txtApell">Apellido</string>
+    <string name="txtTipoDoc">Tipo Doc</string>
+    <string name="txtnumDoc">Número</string>
+    <string name="txtTel">Teléfono</string>
+    <string name="txtInmueble">Inmueble</string>
+    <string name="etiqueta_ubicacion">Ubicación</string>
+    <string name="txtCanon">Canon</string>
+    <string name="txtingresos">Ingresos</string>
+    <string name="btnEnviar">Enviar</string>
+    <string name="city">Ciudad</string>
+    <string name="title_activity_busqueda2">Busqueda2</string>
+    <string name="title_activity_seleccionar_tipo_busqueda">SeleccionarTipoBusqueda</string>
+    <string name="titulo">Inmovic</string>
+    <string name="version">Versión 1.0</string>
+    <string name="tenga">Tenga en cuenta que la aplicación requiere acceso a internet y puede consumir recursos de su plan de datos</string>
+    <string name="autores">Autores</string>
+    <string name="alexis">Yefry Alexis Calderón Yepes</string>
+    <string name="felipe">Felipe Correa González</string>
+    <string name="oscar">Oscar David Gallón Rosero</string>
+    <string name="copyri">©2013. Unidad de Atención y Reparación Integral a la Victimas</string>
+    <string name="dere">Todos los derechos reservados</string>
+    <string name="copy1">©2013. Unidad de Atención y Reparación Integral</string>
+    <string name="copy2">a las Victimas</string>
+    <string name="datosPesonales">Datos Personales</string>
+    <string name="apellido">Apellido</string>
+    <string name="title_activity_acercade">Acercade</string>
+
+</resources>
