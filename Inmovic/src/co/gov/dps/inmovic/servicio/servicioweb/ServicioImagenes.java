@@ -5,13 +5,11 @@ import java.net.URL;
 import co.gov.dps.inmovic.dominio.controladores.ControllerDestacados;
 import co.gov.dps.inmovic.dominio.controladores.ComunicadorGeneral;
 import co.gov.dps.inmovic.presentacion.actividades.destacados.R;
-import co.gov.dps.inmovic.presentacion.vistas.destacados.DestacadoUI;
 import co.gov.dps.inmovic.presentacion.vistas.vistabien.Resultados;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -41,7 +39,7 @@ public class ServicioImagenes extends AsyncTask<String, Integer, Boolean> {
 
 		progressDialog = new ProgressDialog(ComunicadorGeneral.getActividad());
 		progressDialog
-				.setMessage("La Carga de imagenes puede tardar, toque la pantalla para continuar navengando.");
+				.setMessage("La Carga de imagenes puede tardar, toque la pantalla para continuar navegando.");
 
 	}
 
@@ -146,7 +144,7 @@ public class ServicioImagenes extends AsyncTask<String, Integer, Boolean> {
 			if (searchForEmptyUrlArray() == 1) {
 				builder.setMessage("Por el momento este inmueble no cuenta con imagenes");
 			} else if (searchForEmptyUrlArray() == 2) {
-				builder.setMessage("Hay algunos links a imagenes rotos, pronto podras disfrutar de estas imagenes. Gracias por tu comprension");
+				builder.setMessage("Imagen no disponible");
 
 			} else {
 				builder.setMessage("Lo sentimos ocurrio un problema al cargar las imagenes, revise su conexion a internet e intente de nuevo");

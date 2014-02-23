@@ -59,7 +59,7 @@ public class ControllerResultados {
 
 	}
 
-	public void enviarActividadAComunicadorGeneral(Activity A) {
+	public void setResultadoActivity(Activity A) {
 		ComunicadorGeneral.setActividad(A);
 	}
 

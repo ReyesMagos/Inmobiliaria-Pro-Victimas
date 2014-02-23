@@ -588,8 +588,8 @@
                     android:id="@+id/btnComentario"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
-                    android:layout_weight="1"
                     android:layout_gravity="center"
+                    android:layout_weight="1"
                     android:src="@drawable/comentar_icono" />
 
                 <ImageView
@@ -599,16 +599,15 @@
                     android:layout_weight="1"
                     android:onClick="btnContacto"
                     android:src="@drawable/icono_contacto" />
-                
-                  <ImageView
+
+                <ImageView
                     android:id="@+id/imageView2"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:onClick="btnCLickCompartir2"
+                    android:onClick="btnCLickCompartirBienInmueble"
                     android:src="@drawable/compartit" />
-                
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

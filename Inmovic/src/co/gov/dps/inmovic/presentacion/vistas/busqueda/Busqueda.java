@@ -508,6 +508,7 @@ public class Busqueda extends ActionBarActivity {
 	 */
 	public void btnMostrarClick(View view) {
 
+		controladorBusqueda.setLlamadas(1);
 		if (controladorBusqueda.verificarOpcionesBusquedaSeleccionadas() != false) {
 			// Se ordena al controlador crear una lista ligada con las opciones
 			// seleccionadas por el usuario
@@ -568,7 +569,8 @@ public class Busqueda extends ActionBarActivity {
 			// Se recorre cada resultado que hay en la lista y de ellos se
 			// guarda el nombre del bien, para mostrarlo en la lista luego
 			for (BienInmobiliario b : listaResultadosBienesInmobiliarios) {
-				arrayAdapter.add(b.getNombredelbien() + "-" + b.getTipodebien());
+				arrayAdapter
+						.add(b.getNombredelbien() + "-" + b.getTipodebien());
 				Log.i("Resultados", b.getNombredelbien() + "-" + b.getTipo()
 						+ "-" + b.getNumBaño() + "-" + b.getNumHabitacion()
 						+ "-" + b.getValor());
@@ -636,7 +638,7 @@ public class Busqueda extends ActionBarActivity {
 	@SuppressLint("NewApi")
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-
+		controladorBusqueda.setLlamadas(0);
 		switch (item.getItemId()) {
 		// Si se selecciona en el actionbar la opcion de regresar se crea un
 		// intento con la actividad previa y se llama esta
@@ -675,13 +677,33 @@ public class Busqueda extends ActionBarActivity {
 		// TODO Auto-generated method stub
 		super.onRestoreInstanceState(savedInstanceState);
 		controladorBusqueda.establerActividadEnComunicadorGeneral(this);
+		if (controladorBusqueda.getLlamadas() == 1) {
+			if (controladorBusqueda.verificarOpcionesBusquedaSeleccionadas() != false) {
+				// Se ordena al controlador crear una lista ligada con las
+				// opciones
+				// seleccionadas por el usuario
+				controladorBusqueda.crearLigaBusquedaBieneInmobiliarios();
+			} else {
+				controladorBusqueda.searchEveryThing();
+			}
+		}
 	}
 
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		controladorBusqueda.establerActividadEnComunicadorGeneral(this);
+		if (controladorBusqueda.getLlamadas() == 1) {
+			if (controladorBusqueda.verificarOpcionesBusquedaSeleccionadas() != false) {
+				// Se ordena al controlador crear una lista ligada con las
+				// opciones
+				// seleccionadas por el usuario
+				controladorBusqueda.crearLigaBusquedaBieneInmobiliarios();
+			} else {
+				controladorBusqueda.searchEveryThing();
+			}
+		}
+
 	}
 
 	// ********************************************************************************
@@ -783,6 +805,7 @@ public class Busqueda extends ActionBarActivity {
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 
+		controladorBusqueda.setLlamadas(0);
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			Intent upIntent = new Intent(this, SeleccionarTipoBusqueda.class);
 			if (NavUtils.shouldUpRecreateTask(this, upIntent)) {

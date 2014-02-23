@@ -1,32 +1,25 @@
 package co.gov.dps.inmovic.presentacion.vistas.destacados;
 
-import co.gov.dps.inmovic.dominio.controladores.ComunicadorGeneral;
+import co.gov.dps.inmovic.dominio.controladores.ControllerFormulario;
 import co.gov.dps.inmovic.presentacion.actividades.destacados.R;
 
-import co.gov.dps.inmovic.presentacion.vistas.busqueda.SeleccionarTipoBusqueda;
 import co.gov.dps.inmovic.presentacion.vistas.vistabien.Resultados;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
-import android.text.Editable;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class Formulario extends ActionBarActivity {
 
@@ -40,16 +33,8 @@ public class Formulario extends ActionBarActivity {
 	TextView inmueble;
 	EditText canon;
 	EditText ingreso;
-
-	private String name;
-	private String apell;
-	private String city;
-	private String num;
-	private String telefono;
-	private String nameInmueble;
-	private String valCanon;
-	private String valIngreso;
 	public static int tipoBienSeleccionado;
+	public static ControllerFormulario controladorFormulario;
 	public android.support.v7.app.ActionBar action;
 
 	@Override
@@ -58,9 +43,9 @@ public class Formulario extends ActionBarActivity {
 		setContentView(R.layout.formulario_inscripcion);
 		action = getSupportActionBar();
 		action.setTitle("Resultado");
-
 		action.setDisplayHomeAsUpEnabled(true);
-		;
+		controladorFormulario = new ControllerFormulario();
+		controladorFormulario.setActivityFormulario(this);
 
 		// opcionesDoc = (Spinner) findViewById(R.id.spinner1);
 		this.nombre = (EditText) findViewById(R.id.editText1);
@@ -71,45 +56,21 @@ public class Formulario extends ActionBarActivity {
 		this.tel = (EditText) findViewById(R.id.editText4);
 		// this.inmueble = (TextView) findViewById(R.id.textView1);
 		this.canon = (EditText) findViewById(R.id.editText6);
-		if (ComunicadorGeneral.getBienAMostrar() == null) {
+		if (controladorFormulario.getBienInmobiliarioThatWillBeShowed() != null) {
 			/*
 			 * inmueble.setText(ComunicadorGeneral.getBienALaVentaAMostrar()
 			 * .getDescripcion());
 			 */
-			canon.setText(ComunicadorGeneral.getBienALaVentaAMostrar()
-					.getValor());
+			canon.setText(controladorFormulario
+					.getBienInmobiliarioThatWillBeShowed().getValor());
 		} else {
 			/*
 			 * inmueble.setText(ComunicadorGeneral.getBienAMostrar()
 			 * .getNombredelbien());
 			 */
-			canon.setText(ComunicadorGeneral.getBienAMostrar().getValor());
+			canon.setText(controladorFormulario
+					.getBienALaVentaThatWillBeShowed().valor);
 		}
-
-		// this.ingreso = (EditText) findViewById(R.id.editText7);
-
-		// final String[] opciones = new String[] { "C.C", "C.E", "Otro" };
-
-		/*
-		 * ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this,
-		 * android.R.layout.simple_list_item_1, opciones); adaptador
-		 * .setDropDownViewResource
-		 * (android.R.layout.simple_expandable_list_item_1);
-		 * opcionesDoc.setAdapter(adaptador);
-		 * 
-		 * opcionesDoc .setOnItemSelectedListener(new
-		 * AdapterView.OnItemSelectedListener() {
-		 * 
-		 * @Override public void onItemSelected(AdapterView<?> arg0, View arg1,
-		 * int arg2, long arg3) { // TODO Auto-generated method stub
-		 * 
-		 * }
-		 * 
-		 * @Override public void onNothingSelected(AdapterView<?> arg0) { //
-		 * TODO Auto-generated method stub
-		 * 
-		 * } });
-		 */
 
 		btnEnviar = (Button) findViewById(R.id.btnEnviar);
 		btnEnviar.setOnClickListener(new OnClickListener() {
@@ -117,70 +78,22 @@ public class Formulario extends ActionBarActivity {
 			@Override
 			public void onClick(View arg0) {
 
-				name = nombre.getText().toString();
+				controladorFormulario.setNombre(nombre.getText().toString());
 
-				if (name.equals("")) {
-					mensajeAlerta("Por favor Ingrese su nombre");
+				controladorFormulario.setApell(apellido.getText().toString());
+
+				controladorFormulario.setNum(numero.getText().toString());
+
+				controladorFormulario.setCity(ciudad.getText().toString());
+
+				controladorFormulario.setTelefono(tel.getText().toString());
+
+				controladorFormulario.setValCanon(canon.getText().toString());
+				if (!controladorFormulario.verificarInformation()) {
+
+					controladorFormulario.eraseData();
 					return;
 				}
-
-				apell = apellido.getText().toString();
-				if (apell.equals("")) {
-					mensajeAlerta("Por favor Ingrese su apellido");
-					return;
-				}
-
-				num = numero.getText().toString();
-				if (num.equals("")) {
-					mensajeAlerta("Por favor Ingrese su documento de Identidad");
-					return;
-				} else if (!criticaCamposTexto(num)) {
-					mensajeAlerta("Por favor verifique el documento de identidad.");
-					numero.setText("");
-					return;
-				}
-
-				city = ciudad.getText().toString();
-				if (city.equals("")) {
-					mensajeAlerta("Por favor Ingrese la Ciudad");
-					return;
-				}
-
-				telefono = tel.getText().toString();
-				if (telefono.equals("")) {
-					mensajeAlerta("Por favor Ingrese un n˙mero de TelÈfono");
-					return;
-				} else if (!criticaCamposTexto(telefono)) {
-					mensajeAlerta("Por favor Ingrese un n˙mero de TelÈfono valido");
-					tel.setText("");
-					return;
-
-				}
-				// nameInmueble =
-				// ComunicadorGeneral.getBienAMostrar().getNombredelbien();
-				valCanon = canon.getText().toString();
-				if (valCanon.equals("")) {
-					mensajeAlerta("Por favor Ingrese un valor para el "
-							+ " Inmueble");
-					return;
-				} else if (!criticaCamposTexto(valCanon)
-						&& !valCanon.equals("")) {
-					valCanon = "En actualizaciÛn";
-				} else if (!criticaCamposTexto(valCanon)) {
-					mensajeAlerta("Por favor Ingrese un valor valido para el Inmueble");
-					return;
-				}
-				/*
-				 * valIngreso = ingreso.getText().toString(); if
-				 * (valIngreso.equals("")) {
-				 * mensajeAlerta("Por favor Ingrese sus ingresos mensuales");
-				 * return; } else if (!criticaCamposTexto(valIngreso)) {
-				 * mensajeAlerta
-				 * ("Por favor Ingrese un valor valido para los ingresos");
-				 * ingreso.setText(""); return;
-				 * 
-				 * }
-				 */
 
 				Intent i = new Intent(Intent.ACTION_SEND);
 				i.setType("message/rfc822");
@@ -188,108 +101,117 @@ public class Formulario extends ActionBarActivity {
 						new String[] { "arriendos.frv@unidadvictimas.gov.co" });
 
 				if (Formulario.tipoBienSeleccionado == 0) {
-					i.putExtra(Intent.EXTRA_SUBJECT,
+					i.putExtra(
+							Intent.EXTRA_SUBJECT,
 							"Formulario arrendamiento inmuebles "
-									+ ComunicadorGeneral.getBienAMostrar()
+									+ controladorFormulario
+											.getBienInmobiliarioThatWillBeShowed()
 											.getNombredelbien());
 					i.putExtra(
 							Intent.EXTRA_TEXT,
-							"Hay un usuario de Inmovic para Android que desea mas informaciÛn acerca del inmueble: "
-									+ ComunicadorGeneral.getBienAMostrar()
+							"Hay un usuario de Inmovic para Android que desea mas información acerca del inmueble: "
+									+ controladorFormulario
+											.getBienInmobiliarioThatWillBeShowed()
 											.getNombredelbien()
 									+ "\n"
 									+ "Tipo: "
-									+ ComunicadorGeneral.getBienAMostrar()
+									+ controladorFormulario
+											.getBienInmobiliarioThatWillBeShowed()
 											.getTipo()
 									+ "\n"
 									+ "Area: "
-									+ ComunicadorGeneral.getBienAMostrar()
+									+ controladorFormulario
+											.getBienInmobiliarioThatWillBeShowed()
 											.getTipodeinmueble()
 									+ "\n"
 									+ "UbicaciÛn: "
-									+ ComunicadorGeneral.getBienAMostrar()
+									+ controladorFormulario
+											.getBienInmobiliarioThatWillBeShowed()
 											.getMunicipio()
 									+ "\n"
 									+ "Departamento: "
-									+ ComunicadorGeneral.getBienAMostrar()
+									+ controladorFormulario
+											.getBienInmobiliarioThatWillBeShowed()
 											.getDepartamento()
 									+ "\n"
 									+ "Folio Matricula"
-									+ ComunicadorGeneral.getBienAMostrar()
+									+ controladorFormulario
+											.getBienInmobiliarioThatWillBeShowed()
 											.getFoliodematriculainmobiliaria()
 									+ "\n"
 									+ "Precio: "
-									+ ComunicadorGeneral.getBienAMostrar()
+									+ controladorFormulario
+											.getBienInmobiliarioThatWillBeShowed()
 											.getValor()
 									+ "\n"
-									+ "A continuaciÛn encontrar· la informaciÛn del usuario para comunicarse con Èl:"
+									+ "A continuación encontrará la información del usuario para comunicarse con él:"
 									+ "Nombre: "
-									+ name
+									+ controladorFormulario.getNombre()
 									+ " "
-									+ apell
+									+ controladorFormulario.getApell()
 									+ "\n"
-									+ "N˙mero documento: "
-									+ num
+									+ "Nùmero documento: "
+									+ controladorFormulario.getNum()
 									+ "\n"
 									+ "Ciudad:"
-									+ city
+									+ controladorFormulario.getCity()
 									+ "\n"
-									+ "TelÈfono: "
-									+ telefono
+									+ "Teléfono: "
+									+ controladorFormulario.getTelefono()
 									+ "\n"
 									+ "Valor Arriendo: $"
-									+ valCanon);
+									+ controladorFormulario.getValCanon());
 				} else {
 					i.putExtra(Intent.EXTRA_SUBJECT,
 							"Formulario Venta inmuebles ");
 					i.putExtra(
 							Intent.EXTRA_TEXT,
-							"Hay un usuario de Inmovic para Android que desea mas informaciÛn acerca del bien : "
-									+ ComunicadorGeneral
-											.getBienALaVentaAMostrar().tipo
+							"Hay un usuario de Inmovic para Android que desea mas información acerca del bien : "
+									+ controladorFormulario
+											.getBienALaVentaThatWillBeShowed()
+											.getTipo()
 									+ "\n"
-									+ "UbicaciÛn: "
-									+ ComunicadorGeneral
-											.getBienALaVentaAMostrar()
+									+ "Ubicación: "
+									+ controladorFormulario
+											.getBienALaVentaThatWillBeShowed()
 											.getUbicacion()
 									+ "\n"
 									+ "Valor: "
-									+ ComunicadorGeneral
-											.getBienALaVentaAMostrar()
+									+ controladorFormulario
+											.getBienALaVentaThatWillBeShowed()
 											.getValor()
 									+ "\n"
-									+ "DescripciÛn: "
-									+ ComunicadorGeneral
-											.getBienALaVentaAMostrar()
+									+ "Descripción: "
+									+ controladorFormulario
+											.getBienALaVentaThatWillBeShowed()
 											.getDescripcion()
 									+ "\n"
-									+ "A continuaciÛn encontrar· la informaciÛn del usuario para comunicarse con Èl:"
+									+ "A continuación"
+									+ "n encontrará la información del usuario para comunicarse con él:"
 									+ "\n"
 									+ "Nombre: "
-									+ name
+									+ controladorFormulario.getNombre()
 									+ " "
-									+ apell
+									+ controladorFormulario.getApell()
 									+ "\n"
-									+ "N˙mero documento: "
-									+ num
+									+ "Número documento: "
+									+ controladorFormulario.getNum()
 									+ "\n"
 									+ "Ciudad:"
-									+ city
+									+ controladorFormulario.getCity()
 									+ "\n"
-									+ "TelÈfono: "
-									+ telefono
+									+ "Teléfono: "
+									+ controladorFormulario.getTelefono()
 									+ "\n"
 									+ "Valor Venta: $"
-									+ valCanon);
+									+ controladorFormulario.getValCanon());
 				}
 
 				try {
 					startActivity(Intent.createChooser(i, "Enviando Email..."));
 					finish();
 				} catch (android.content.ActivityNotFoundException ex) {
-					Toast.makeText(Formulario.this,
-							"There are no email clients installed.",
-							Toast.LENGTH_SHORT).show();
+
 				}
 			}
 		});
@@ -303,8 +225,9 @@ public class Formulario extends ActionBarActivity {
 		return true;
 	}
 
-	public void mensajeAlerta(String mensaje) {
-		AlertDialog.Builder alerta = new AlertDialog.Builder(Formulario.this);
+	public static void mensajeAlerta(String mensaje) {
+		AlertDialog.Builder alerta = new AlertDialog.Builder(
+				controladorFormulario.getGeneralActivity());
 		alerta.setTitle("Error");
 		alerta.setMessage(mensaje);
 		alerta.setIcon(R.drawable.icono);
@@ -319,30 +242,6 @@ public class Formulario extends ActionBarActivity {
 					}
 				});
 		alerta.show();
-	}
-
-	public boolean criticaCamposTexto(String num) {
-		boolean numero = true;
-
-		int k = 0;
-		char c;
-		while (k < num.length()) {
-			c = num.charAt(k);
-			if (k == 0) {
-				if ((c < 48 || c > 57)) {
-
-					return false;
-				}
-				k++;
-				continue;
-			}
-			if (c < 48 || c > 57) {
-
-				return false;
-			}
-			k++;
-		}
-		return numero;
 	}
 
 	/**
@@ -391,4 +290,5 @@ public class Formulario extends ActionBarActivity {
 		return super.onKeyDown(keyCode, event);
 
 	}
+
 }

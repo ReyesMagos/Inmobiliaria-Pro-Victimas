@@ -11,14 +11,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 
-import com.google.android.gms.internal.cm;
-
 import co.gov.dps.inmovic.dominio.adaptadores.Storage;
 import co.gov.dps.inmovic.dominio.entidades.BienInmobiliario;
 import co.gov.dps.inmovic.dominio.entidades.Destacado;
 import co.gov.dps.inmovic.dominio.singletonentidades.SingletonBienes;
 import co.gov.dps.inmovic.presentacion.actividades.destacados.Acercade;
-import co.gov.dps.inmovic.presentacion.vistas.busqueda.Busqueda;
 import co.gov.dps.inmovic.presentacion.vistas.busqueda.SeleccionarTipoBusqueda;
 import co.gov.dps.inmovic.presentacion.vistas.destacados.DestacadoUI;
 import co.gov.dps.inmovic.presentacion.vistas.vistabien.Resultados;
@@ -311,10 +308,9 @@ public class ControllerDestacados {
 		}
 		return s;
 	}
-	
-	public void cambiarAACercaDe(){
-		Intent i = new Intent(ComunicadorGeneral.getActividad(),
-				Acercade.class);
+
+	public void cambiarAACercaDe() {
+		Intent i = new Intent(ComunicadorGeneral.getActividad(), Acercade.class);
 		ComunicadorGeneral.getActividad().startActivity(i);
 	}
 
@@ -331,7 +327,7 @@ public class ControllerDestacados {
 		} else {
 			DestacadoUI
 					.mensajeDeAlerta(
-							"La Aplicación no tiene los datos minimos para realizar esta acción. Debe estar conectado a internet al menos en una ejecución",
+							"La Aplicaci—n no tiene los datos minimos para realizar esta acci—n. Debe estar conectado a internet al menos en una ejecuci—n",
 							"Falta de Datos");
 		}
 	}

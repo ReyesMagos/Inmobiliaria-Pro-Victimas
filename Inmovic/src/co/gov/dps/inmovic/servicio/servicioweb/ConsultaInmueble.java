@@ -5,6 +5,7 @@ import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
 import co.gov.dps.inmovic.dominio.controladores.ComunicadorGeneral;
@@ -13,6 +14,12 @@ import co.gov.dps.inmovic.presentacion.vistas.vistabien.Resultados;
 
 public class ConsultaInmueble extends AsyncTask<String, Integer, Boolean> {
 
+	ProgressDialog progressDialog;
+	public ConsultaInmueble(){
+		progressDialog = new ProgressDialog(ComunicadorGeneral.getActividad());
+		progressDialog.setMessage("Cargando Comentarios");
+		progressDialog.setCancelable(false);
+	}
 	@Override
 	protected Boolean doInBackground(String... params) {
 		boolean resul = true;
@@ -57,6 +64,13 @@ public class ConsultaInmueble extends AsyncTask<String, Integer, Boolean> {
 
 		return resul;
 	}
+	
+	@Override
+	protected void onPreExecute() {
+		// TODO Auto-generated method stub
+		progressDialog.show();
+		super.onPreExecute();
+	}
 
 	@Override
 	protected void onPostExecute(Boolean result) {
@@ -71,7 +85,7 @@ public class ConsultaInmueble extends AsyncTask<String, Integer, Boolean> {
 
 			Log.i("Inmueble", "no existe");
 		}
-
+		progressDialog.dismiss();
 		super.onPostExecute(result);
 	}
 

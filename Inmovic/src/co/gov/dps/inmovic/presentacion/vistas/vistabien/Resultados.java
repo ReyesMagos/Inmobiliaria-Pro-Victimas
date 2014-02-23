@@ -97,12 +97,10 @@ public class Resultados extends ActionBarActivity {
 
 		action.setDisplayHomeAsUpEnabled(true);
 		controladorResultado = new ControllerResultados();
-		controladorResultado
-				.enviarActividadAComunicadorGeneral(Resultados.this);
+		controladorResultado.setResultadoActivity(Resultados.this);
 		if (controladorResultado.getOpcionResultados() == 1) {
 			setContentView(R.layout.activity_main);
-			controladorResultado
-					.enviarActividadAComunicadorGeneral(Resultados.this);
+			controladorResultado.setResultadoActivity(Resultados.this);
 			if (controladorResultado.isLLamadoDesdeDestacados()) {
 				action.setTitle("Destacados");
 			} else {
@@ -112,8 +110,7 @@ public class Resultados extends ActionBarActivity {
 
 		} else {
 			setContentView(R.layout.activity_resultado2);
-			controladorResultado
-					.enviarActividadAComunicadorGeneral(Resultados.this);
+			controladorResultado.setResultadoActivity(Resultados.this);
 			controladorResultado.llamarDesdeDestacados(false);
 
 			action.setTitle("Busqueda");
@@ -125,26 +122,36 @@ public class Resultados extends ActionBarActivity {
 
 	}
 
-	public void btnCLickCompartir(View v) {
+	public void btnCLickCompartirBienALaVenta(View v) {
 		RedSocial compartir = new RedSocial();
-		compartir.compartirRedSocial(this, ComunicadorGeneral
-				.getBienALaVentaAMostrar().getDescripcion()
-				+ " esta disponilbe para comprar"
-				+ " esta ubicado en: "
+		compartir.compartirRedSocial(this, organizeDescription(ComunicadorGeneral
+				.getBienALaVentaAMostrar().getDescripcion())
+				+ " esta disponilbe para comprar.\n "
+				+ "Se encuentra ubicado en:  "
 				+ ComunicadorGeneral.getBienALaVentaAMostrar().getUbicacion()
 				+ " @UnidadVictimas ");
 	}
 
-	public void btnCLickCompartir2(View v) {
+	public void btnCLickCompartirBienInmueble(View v) {
 		RedSocial compartir = new RedSocial();
 		compartir.compartirRedSocial(this, ComunicadorGeneral.getBienAMostrar()
 				.getNombredelbien()
-				+ " esta disponilbe para comprar"
-				+ " esta ubicado en: "
+				+ " esta disponilbe para arrendar. \n"
+				+ "Se encuentra ubicado en:  "
 				+ ComunicadorGeneral.getBienAMostrar().getDepartamento()
 				+ "-"
 				+ ComunicadorGeneral.getBienAMostrar().getMunicipio()
 				+ " @UnidadVictimas ");
+	}
+
+	public String organizeDescription(String s) {
+		for (int i = 0; i < s.length(); i++) {
+			if (Character.toString(s.charAt(i)).equals(";")) {
+				s = s.substring(0, i);
+				return s;
+			}
+		}
+		return s;
 	}
 
 	public void btnClickFormulario(View v) {
@@ -232,8 +239,6 @@ public class Resultados extends ActionBarActivity {
 		txtMail.setText(b.getAreacontruidamts2());
 		txtMail2.setText(b.getDescripcion());
 
-
-
 		controladorResultado.ordenaCargaImagenes();
 
 	}
@@ -284,7 +289,6 @@ public class Resultados extends ActionBarActivity {
 		txtNumba.setText(bienventa.getInformaciondecontacto());
 		txtCanon.setText(bienventa.getValor());
 		txtDepto.setText(bienventa.getDescripcion());
-
 
 		controladorResultado.ordenaCargaImagenes2();
 	}
@@ -666,14 +670,14 @@ public class Resultados extends ActionBarActivity {
 	protected void onRestoreInstanceState(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onRestoreInstanceState(savedInstanceState);
-		controladorResultado.enviarActividadAComunicadorGeneral(this);
+		controladorResultado.setResultadoActivity(this);
 	}
 
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		controladorResultado.enviarActividadAComunicadorGeneral(this);
+		controladorResultado.setResultadoActivity(this);
 	}
 
 	// ********************************************************************************
@@ -730,7 +734,7 @@ public class Resultados extends ActionBarActivity {
 		controladorResultado.obtenerActividad().startActivity(i2);
 
 	}
-	
+
 	public static ControllerResultados getControladorResultado() {
 		return controladorResultado;
 	}

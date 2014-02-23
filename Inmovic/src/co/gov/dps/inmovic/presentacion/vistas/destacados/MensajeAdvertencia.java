@@ -53,10 +53,10 @@ public class MensajeAdvertencia {
 					.setTitle("Politica De Privacidad")
 					.setIcon(R.drawable.icono)
 					.setMessage(
-							"Con esta aplicación se quiere crear condiciones de prosperidad en la población vulnerable, " +
-							"contribuir a la reconciliación de los Colombianos y promover la integración regional." + "\n" + 
+							"Con esta aplicaci—n se quiere crear condiciones de prosperidad en la poblaci—n vulnerable, " +
+							"contribuir a la reconciliaci—n de los Colombianos y promover la integraci—n regional." + "\n" + 
 							"Todos los bienes aqui mostrados pertenecen al gobierno de la republica de Colombia, e integran " +
-							"e integran a la Unidad para la Atención y Reparación Integral a las Víctimas.")
+							"e integran a la Unidad para la Atenci—n y Reparaci—n Integral a las Víctimas.")
 					.setPositiveButton("Comprendo",
 							new Dialog.OnClickListener() {
 

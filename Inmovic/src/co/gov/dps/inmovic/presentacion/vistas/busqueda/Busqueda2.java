@@ -11,8 +11,10 @@ import co.gov.dps.inmovic.presentacion.vistas.vistabien.Resultados;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -49,7 +51,7 @@ public class Busqueda2 extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 
 		controladorBusqueda = new ControllerBusqueda2();
-		controladorBusqueda.establerActividadEnComunicadorGeneral(this);
+		controladorBusqueda.setBusqueda2Activity(this);
 		setContentView(R.layout.activity_busqueda2);
 		action = ((Busqueda2) controladorBusqueda
 				.devolverActividadEnComunicadorGeneral()).getSupportActionBar();
@@ -57,6 +59,14 @@ public class Busqueda2 extends ActionBarActivity {
 		action.setDisplayHomeAsUpEnabled(true);
 
 		loadLayoutControls();
+		/*
+		 * / if (controladorBusqueda.getLlamadas2() == 1) { if
+		 * (controladorBusqueda.verificarOpcionesBusquedaSeleccionadas() !=
+		 * false) { // Se ordena al controlador crear una lista ligada con las
+		 * // opciones // seleccionadas por el usuario
+		 * controladorBusqueda.crearListaLigadaBusquedaBienEnVenta(); } else {
+		 * controladorBusqueda.searchEveryThing(); } /
+		 */
 
 	}
 
@@ -290,6 +300,7 @@ public class Busqueda2 extends ActionBarActivity {
 	 *            vista desde la cual es presionado el objeto
 	 */
 	public void btnMostrarClick2(View view) {
+		controladorBusqueda.setLlamadas2(1);
 
 		if (controladorBusqueda.verificarOpcionesBusquedaSeleccionadas() != false) {
 			// Se ordena al controlador crear una lista ligada con las opciones
@@ -344,8 +355,8 @@ public class Busqueda2 extends ActionBarActivity {
 			// agrega cada uno al adaptador
 			for (BienALaVenta b : b1) {
 				arrayAdapter.add(controladorBusqueda.getTittleForListView(b
-						.getDescripcion())+"-"+b.getTipo());
-				
+						.getDescripcion()) + "-" + b.getTipo());
+
 			}
 
 			// Se agrega un boton para cancelar la seleccion de alguna opcion
@@ -401,7 +412,7 @@ public class Busqueda2 extends ActionBarActivity {
 	@SuppressLint("NewApi")
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-
+		controladorBusqueda.setLlamadas2(0);
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			// se crea el intent adecuado para esta accion y se llama la
@@ -437,14 +448,35 @@ public class Busqueda2 extends ActionBarActivity {
 	protected void onRestoreInstanceState(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onRestoreInstanceState(savedInstanceState);
-		controladorBusqueda.establerActividadEnComunicadorGeneral(this);
+		controladorBusqueda.setBusqueda2Activity(this);
+		if (controladorBusqueda.getLlamadas2() == 1) {
+			if (controladorBusqueda.verificarOpcionesBusquedaSeleccionadas() != false) {
+				// Se ordena al controlador crear una lista ligada con las
+				// opciones
+				// seleccionadas por el usuario
+				controladorBusqueda.crearListaLigadaBusquedaBienEnVenta();
+			} else {
+				controladorBusqueda.searchEveryThing();
+			}
+		}
+
 	}
 
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		controladorBusqueda.establerActividadEnComunicadorGeneral(this);
+		controladorBusqueda.setBusqueda2Activity(this);
+		if (controladorBusqueda.getLlamadas2() == 1) {
+			if (controladorBusqueda.verificarOpcionesBusquedaSeleccionadas() != false) {
+				// Se ordena al controlador crear una lista ligada con las
+				// opciones
+				// seleccionadas por el usuario
+				controladorBusqueda.crearListaLigadaBusquedaBienEnVenta();
+			} else {
+				controladorBusqueda.searchEveryThing();
+			}
+		}
 	}
 
 	// ********************************************************************************
@@ -480,7 +512,7 @@ public class Busqueda2 extends ActionBarActivity {
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-
+		controladorBusqueda.getLlamadas2();
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			Intent upIntent = new Intent(this, SeleccionarTipoBusqueda.class);
 			if (NavUtils.shouldUpRecreateTask(this, upIntent)) {

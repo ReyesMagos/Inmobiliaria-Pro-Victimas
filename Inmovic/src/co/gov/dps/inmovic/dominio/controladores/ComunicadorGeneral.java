@@ -15,7 +15,11 @@ public class ComunicadorGeneral {
 	public static BienALaVenta bienALaVentaAMostrar;
 	public static boolean haydatosminimos;
 	public static boolean fromDestacados;
+	public static int llamadas;
 
+	public static int llamada2;
+	
+	
 	public static View imagen;
 
 	public static View getImagen() {
@@ -23,6 +27,26 @@ public class ComunicadorGeneral {
 	}
 	
 	
+
+	public static int getLlamada2() {
+		return llamada2;
+	}
+
+
+
+	public static void setLlamada2(int llam2) {
+		llamada2 = llam2;
+	}
+
+
+
+	public static int getLlamadas() {
+		return llamadas;
+	}
+
+	public static void setLlamadas(int ll) {
+		llamadas = ll;
+	}
 
 	public static void setImagen(View imagen) {
 		ComunicadorGeneral.imagen = imagen;
@@ -61,9 +85,8 @@ public class ComunicadorGeneral {
 	}
 
 	public static BienInmobiliario getBienAMostrar() {
-			return bienAMostrar;
- 			
-		
+		return bienAMostrar;
+
 	}
 
 	public static void setBienAMostrar(BienInmobiliario bienAMostrar) {

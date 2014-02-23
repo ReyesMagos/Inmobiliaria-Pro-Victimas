@@ -24,8 +24,17 @@ public class ControllerBusqueda2 {
 	public ControllerBusqueda2() {
 		accesoBienEnVenta = new AccesoBienEnVenta();
 		listaBusquedaVenta = new ArrayList<BienALaVenta>();
-
+		
 	}
+	
+	public int getLlamadas2() {
+		return ComunicadorGeneral.getLlamada2();
+	}
+
+	public void setLlamadas2(int llamadas) {
+		ComunicadorGeneral.setLlamada2(llamadas);
+	}
+
 
 	public String[] gestionarCargaTipoDeBienBienesEnVenta() {
 		accesoBienEnVenta = new AccesoBienEnVenta();
@@ -62,7 +71,7 @@ public class ControllerBusqueda2 {
 		return ComunicadorBusqueda.getOpcionResultados();
 	}
 
-	public void establerActividadEnComunicadorGeneral(Activity actividad) {
+	public void setBusqueda2Activity(Activity actividad) {
 		ComunicadorGeneral.setActividad(actividad);
 	}
 

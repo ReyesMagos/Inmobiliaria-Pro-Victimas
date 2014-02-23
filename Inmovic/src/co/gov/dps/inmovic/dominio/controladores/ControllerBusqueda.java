@@ -37,6 +37,14 @@ public class ControllerBusqueda {
 	// Metodos Para Cargar los elementos de la Vista
 	// ================================================================================
 
+	public int getLlamadas() {
+		return ComunicadorGeneral.getLlamadas();
+	}
+
+	public void setLlamadas(int llamadas) {
+		ComunicadorGeneral.setLlamadas(llamadas);
+	}
+
 	public String[] gestionaCargaDepartamentos() {
 		return accesoBienInmobiliario.cargarDepartamentos();
 	}

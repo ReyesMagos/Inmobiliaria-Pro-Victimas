@@ -6,17 +6,13 @@ import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 import co.gov.dps.inmovic.dominio.controladores.ComunicadorGeneral;
-import co.gov.dps.inmovic.dominio.controladores.ControllerBusqueda2;
 import co.gov.dps.inmovic.dominio.entidades.BienALaVenta;
 import co.gov.dps.inmovic.dominio.singletonentidades.SingletonBienes;
 import co.gov.dps.inmovic.presentacion.vistas.busqueda.Busqueda;
-import co.gov.dps.inmovic.presentacion.vistas.busqueda.Busqueda2;
-import co.gov.dps.inmovic.presentacion.vistas.busqueda.SeleccionarTipoBusqueda;
 import co.gov.dps.inmovic.servicio.servicioweb.ServicioRest;
 
 public class AccesoBienEnVenta {

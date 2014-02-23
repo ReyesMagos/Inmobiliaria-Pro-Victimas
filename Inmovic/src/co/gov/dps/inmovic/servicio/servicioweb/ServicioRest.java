@@ -3,7 +3,6 @@ package co.gov.dps.inmovic.servicio.servicioweb;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.HttpEntity;
@@ -11,35 +10,21 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import co.gov.dps.inmovic.dominio.adaptadores.Storage;
-import co.gov.dps.inmovic.dominio.controladores.ControllerBusqueda;
-import co.gov.dps.inmovic.dominio.controladores.ControllerDestacados;
-import co.gov.dps.inmovic.dominio.controladores.ComunicadorGeneral;
+import co.gov.dps.inmovic.dominio.controladores.ControllerServices;
 import co.gov.dps.inmovic.dominio.entidades.BienInmobiliario;
-import co.gov.dps.inmovic.dominio.singletonentidades.SingletonBienes;
-import co.gov.dps.inmovic.presentacion.vistas.busqueda.Busqueda;
-import co.gov.dps.inmovic.presentacion.vistas.busqueda.Busqueda2;
-import co.gov.dps.inmovic.presentacion.vistas.busqueda.SeleccionarTipoBusqueda;
-import co.gov.dps.inmovic.presentacion.vistas.destacados.DestacadoUI;
-
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.support.v4.app.NavUtils;
 import android.util.Log;
 
 public class ServicioRest extends AsyncTask<String, Integer, Boolean> {
 
 	private String respStr;
-	private String añadidoUrl;
+	private String anadidoUrl;
 	private String opcion;
 	private String url;
 	private String[] datosEscenarios;
@@ -49,6 +34,7 @@ public class ServicioRest extends AsyncTask<String, Integer, Boolean> {
 	private boolean funciono;
 	private List<BienInmobiliario> listaInmbo;
 	private ProgressDialog progressDialog;
+	private ControllerServices controladorServicios;
 
 	/**
 	 * 
@@ -57,7 +43,9 @@ public class ServicioRest extends AsyncTask<String, Integer, Boolean> {
 		this.url = "http://servicedatosabiertoscolombia.cloudapp.net/v1/Atencion_Reparacion_Integral_Victimas/";
 		this.url += urlAux;
 		this.opcion = opcionAux;
-		progressDialog = new ProgressDialog(ComunicadorGeneral.getActividad());
+		controladorServicios = new ControllerServices();
+		progressDialog = new ProgressDialog(
+				controladorServicios.getGeneralActivity());
 		progressDialog.setMessage("Buscando; Por Favor Espere");
 		progressDialog.setCancelable(false);
 
@@ -85,19 +73,6 @@ public class ServicioRest extends AsyncTask<String, Integer, Boolean> {
 
 	public void setRespStr(String respStr) {
 		this.respStr = respStr;
-	}
-
-	public void llenaBienesArriendo() {
-		SingletonBienes singletonBienes = SingletonBienes.getInstance();
-		singletonBienes.llenaInmboli(arregloJson);
-		// singletonBienes.cargaImagenesDestacados();
-		ControllerDestacados controlador = new ControllerDestacados();
-		controlador.devuelveBienesDestacados();
-	}
-
-	public void llenaBienesALaVenta() {
-		SingletonBienes singletonBienes = SingletonBienes.getInstance();
-		singletonBienes.llenaBienesAlaVenta(arregloJson);
 	}
 
 	protected Boolean doInBackground(String... params) {
@@ -141,21 +116,6 @@ public class ServicioRest extends AsyncTask<String, Integer, Boolean> {
 
 	}
 
-	public static boolean verificaConexion(Context ctx) {
-		boolean bConectado = false;
-		ConnectivityManager connec = (ConnectivityManager) ctx
-				.getSystemService(Context.CONNECTIVITY_SERVICE);
-
-		NetworkInfo[] redes = connec.getAllNetworkInfo();
-		for (int i = 0; i < 2; i++) {
-
-			if (redes[i].getState() == NetworkInfo.State.CONNECTED) {
-				bConectado = true;
-			}
-		}
-		return bConectado;
-	}
-
 	protected void onPostExecute(Boolean result) {
 		if (result) {
 			funciono = true;
@@ -171,14 +131,12 @@ public class ServicioRest extends AsyncTask<String, Integer, Boolean> {
 				arregloJson = respJSON.getJSONArray("d");
 				if (opcion.toLowerCase().equals("destacado")) {
 					Storage.saveJSON(respStr, 1);
-					llenaBienesArriendo();
+					controladorServicios.llenaBienesArriendo(arregloJson);
 				} else if (opcion.toLowerCase().equals("venta")) {
 
 					Storage.saveJSON(respStr, 2);
-					llenaBienesALaVenta();
-					Busqueda2.loadSpinnerTipoBienElements();
-					Busqueda2.loadSpinnerUbicacionElements();
-					Busqueda2.loadSpinnerValorElements();
+					controladorServicios.llenaBienesALaVenta(arregloJson);
+					controladorServicios.chargeSpinners();
 
 				} else if (opcion.equals("oculto")) {
 					Storage.saveJSON(respStr, 1);
@@ -194,39 +152,19 @@ public class ServicioRest extends AsyncTask<String, Integer, Boolean> {
 
 		} else {
 			if (opcion.toLowerCase().equals("destacado")) {
-				if (verificaConexion(ComunicadorGeneral.getActividad())) {
-					DestacadoUI.mensajeDeAlerta("Error Inesperado", "Error");
+				if (controladorServicios.verificaConexion()) {
+					controladorServicios
+							.showDestacadosMessage("Error Inesperado");
 
 				} else {
-					DestacadoUI.mensajeDeAlerta(
-							"Error falta de conexion a internet", "Error");
+					controladorServicios
+							.showDestacadosMessage("Error falta de conexion a internet");
 				}
 			} else if (opcion.toLowerCase().equals("venta")) {
 
-				Busqueda.showErrorMessage(
-						"La Aplicacion no tiene los datos minimos para realizar esta acci—n. Debe estar conectado a internet al menos en una ejecuci—n",
-						"Falta de Datos", 2);/*
-											 * / Intent upIntent = new
-											 * Intent(ComunicadorGeneral
-											 * .getActividad(),
-											 * SeleccionarTipoBusqueda.class);
-											 * if
-											 * (NavUtils.shouldUpRecreateTask(
-											 * ComunicadorGeneral
-											 * .getActividad(), upIntent)) {
-											 * android
-											 * .support.v4.app.TaskStackBuilder
-											 * .
-											 * from(ComunicadorGeneral.getActividad
-											 * ()) .addNextIntent(upIntent).
-											 * startActivities();
-											 * 
-											 * } else { NavUtils.navigateUpTo(
-											 * ComunicadorGeneral
-											 * .getActividad(), upIntent);
-											 * 
-											 * }/
-											 */
+				controladorServicios
+						.showBusquedaErrorMessages("La Aplicacion no tiene los datos minimos"
+								+ "para realizar esta acci—n. Debe estar conectado a internet al menos en una ejecuci—n");
 			}
 		}
 		progressDialog.dismiss();

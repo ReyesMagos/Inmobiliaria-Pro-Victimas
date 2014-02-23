@@ -6,10 +6,10 @@
 
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="242dp"
-        android:layout_height="538dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/logo_unidad" />
+        android:src="@drawable/logo_tamano_grandee" />
 
     <TextView
         android:id="@+id/textView1"
