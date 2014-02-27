@@ -77,6 +77,7 @@ public class Formulario extends ActionBarActivity {
 
 			@Override
 			public void onClick(View arg0) {
+				controladorFormulario.eraseData();
 
 				controladorFormulario.setNombre(nombre.getText().toString());
 

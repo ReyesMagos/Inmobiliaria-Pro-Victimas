@@ -1213,6 +1213,7 @@ containing a value of this type.
         public static final int AbsoluteLayout2=0x7f06007e;
         public static final int LinearLayout1=0x7f06004e;
         public static final int RelativeLayout1=0x7f060070;
+        public static final int ScrollView1=0x7f060074;
         public static final int Spinner01=0x7f0600bc;
         public static final int acDepartamento=0x7f060052;
         public static final int acercade=0x7f0600d3;
@@ -1342,7 +1343,6 @@ containing a value of this type.
         public static final int satellite=0x7f060002;
         public static final int scrollView1=0x7f06004a;
         public static final int scrollView2=0x7f06006f;
-        public static final int scrollView3=0x7f060074;
         public static final int search_badge=0x7f060035;
         public static final int search_bar=0x7f060034;
         public static final int search_button=0x7f060036;
@@ -1490,14 +1490,15 @@ containing a value of this type.
         public static final int bienvenida=0x7f030024;
         public static final int contenido_area=0x7f030025;
         public static final int contenido_destacados=0x7f030026;
-        public static final int contenido_seleccionar_inmueble_venta=0x7f030027;
-        public static final int contenido_ubicar=0x7f030028;
-        public static final int custom_info_window=0x7f030029;
-        public static final int formulario_inscripcion=0x7f03002a;
-        public static final int imagen_show=0x7f03002b;
-        public static final int imagen_show2=0x7f03002c;
-        public static final int seleccioninmueblesventas=0x7f03002d;
-        public static final int support_simple_spinner_dropdown_item=0x7f03002e;
+        public static final int contenido_listas_personalizadas=0x7f030027;
+        public static final int contenido_seleccionar_inmueble_venta=0x7f030028;
+        public static final int contenido_ubicar=0x7f030029;
+        public static final int custom_info_window=0x7f03002a;
+        public static final int formulario_inscripcion=0x7f03002b;
+        public static final int imagen_show=0x7f03002c;
+        public static final int imagen_show2=0x7f03002d;
+        public static final int seleccioninmueblesventas=0x7f03002e;
+        public static final int support_simple_spinner_dropdown_item=0x7f03002f;
     }
     public static final class menu {
         public static final int acercade=0x7f0d0000;

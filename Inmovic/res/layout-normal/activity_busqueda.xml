@@ -29,7 +29,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="@string/etiqueta_inmuebles"
-                android:textSize="14sp" />
+                android:textSize="13sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/etiqueta_departamento"
-                    android:textSize="14sp" />
+                    android:textSize="13sp" />
 
                 <Spinner
                     android:id="@+id/spDepartamento"
@@ -62,7 +62,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:text="@string/municipio_lbl"
-                    android:textSize="14sp" />
+                    android:textSize="13sp" />
 
                 <Spinner
                     android:id="@+id/spMunicipio"
@@ -83,7 +83,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:text="@string/etiqueta_tipobien"
-                    android:textSize="14sp" />
+                    android:textSize="13sp" />
 
                 <Spinner
                     android:id="@+id/spTipoBien"
@@ -104,7 +104,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:text="@string/etiqueta_tipoinmueble"
-                    android:textSize="14sp" />
+                    android:textSize="13sp" />
 
                 <Spinner
                     android:id="@+id/spInmueble"
@@ -125,7 +125,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:text="@string/etiqueta_usobien"
-                    android:textSize="14sp" />
+                    android:textSize="13sp" />
 
                 <Spinner
                     android:id="@+id/spUsodelBien"
@@ -146,7 +146,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:text="@string/etiqueta_numerobanos"
-                    android:textSize="14sp" />
+                    android:textSize="13sp" />
 
                 <Spinner
                     android:id="@+id/spnumerobanos"
@@ -167,7 +167,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:text="@string/etiqueta_numerohabitaciones"
-                    android:textSize="14sp" />
+                    android:textSize="13sp" />
 
                 <Spinner
                     android:id="@+id/spnumerohabitaciones"
@@ -188,7 +188,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:text="@string/etiqueta_valor"
-                    android:textSize="14sp" />
+                    android:textSize="13sp" />
 
                 <Spinner
                     android:id="@+id/spValor"

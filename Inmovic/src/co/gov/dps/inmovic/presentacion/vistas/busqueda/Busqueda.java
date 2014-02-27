@@ -146,7 +146,7 @@ public class Busqueda extends ActionBarActivity {
 		// Se anade el layout para mostrar las opciones y la forma en que este
 		// se desplegara
 		adaptadorDepartamento
-				.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
+				.setDropDownViewResource(R.layout.contenido_listas_personalizadas);
 		spDepartamentos.setAdapter(adaptadorDepartamento);
 
 		// Se anade el metodo que se ejecutara cada vez que halla una seleccion
@@ -219,7 +219,7 @@ public class Busqueda extends ActionBarActivity {
 		// Se anade el layout para mostrar las opciones y la forma en que este
 		// se desplegara
 		adaptadorMunicipio
-				.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
+				.setDropDownViewResource(R.layout.contenido_listas_personalizadas);
 
 		// Se anade el metodo que se ejecutara cada vez que halla una seleccion
 		spMunicipio.setAdapter(adaptadorMunicipio);
@@ -263,7 +263,7 @@ public class Busqueda extends ActionBarActivity {
 		adaptadorTipoBien = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, arregloTipoDeBien);
 		adaptadorTipoBien
-				.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
+				.setDropDownViewResource(R.layout.contenido_listas_personalizadas);
 		spTipoBien.setAdapter(adaptadorTipoBien);
 		spTipoBien.setOnItemSelectedListener(new OnItemSelectedListener() {
 
@@ -303,7 +303,7 @@ public class Busqueda extends ActionBarActivity {
 		adaptadorTipoInmueble = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, arregloTipoDeInmueble);
 		adaptadorTipoInmueble
-				.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
+				.setDropDownViewResource(R.layout.contenido_listas_personalizadas);
 		spTipoInmueble.setAdapter(adaptadorTipoInmueble);
 		spTipoInmueble.setOnItemSelectedListener(new OnItemSelectedListener() {
 
@@ -341,7 +341,7 @@ public class Busqueda extends ActionBarActivity {
 		adaptadorUsoBien = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, arregloUsoBien);
 		adaptadorUsoBien
-				.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
+				.setDropDownViewResource(R.layout.contenido_listas_personalizadas);
 		spUsodelBien.setAdapter(adaptadorUsoBien);
 		spUsodelBien.setOnItemSelectedListener(new OnItemSelectedListener() {
 
@@ -379,7 +379,7 @@ public class Busqueda extends ActionBarActivity {
 		adaptadorNumBaños = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, arregloNumeroBanos);
 		adaptadorNumBaños
-				.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
+				.setDropDownViewResource(R.layout.contenido_listas_personalizadas);
 		spNumBaños.setAdapter(adaptadorNumBaños);
 		spNumBaños.setOnItemSelectedListener(new OnItemSelectedListener() {
 
@@ -418,7 +418,7 @@ public class Busqueda extends ActionBarActivity {
 		adaptadorNumHabitacion = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, arregloNumeroHabitaciones);
 		adaptadorNumHabitacion
-				.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
+				.setDropDownViewResource(R.layout.contenido_listas_personalizadas);
 		spNumHabitaciones.setAdapter(adaptadorNumHabitacion);
 		spNumHabitaciones
 				.setOnItemSelectedListener(new OnItemSelectedListener() {
@@ -461,7 +461,7 @@ public class Busqueda extends ActionBarActivity {
 		adaptadorValor = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, arregloValor);
 		adaptadorValor
-				.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
+				.setDropDownViewResource(R.layout.contenido_listas_personalizadas);
 		spValor.setAdapter(adaptadorValor);
 		spValor.setOnItemSelectedListener(new OnItemSelectedListener() {
 

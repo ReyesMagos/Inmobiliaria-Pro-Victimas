@@ -49,6 +49,7 @@ public class ControllerDestacados {
 		if (ComunicadorGeneral.Visitados != null) {
 			devuelveBienesDestacados();
 		} else {
+		
 			String r = Storage.readJSON(1);
 
 			// si el String es nulo esto quiere decir que no hay archivos, por

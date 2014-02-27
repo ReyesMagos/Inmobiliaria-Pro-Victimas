@@ -25,6 +25,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -36,7 +37,7 @@ import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
-public class Comentario extends Activity {
+public class Comentario extends ActionBarActivity {
 
 	private static ListView listaComentario;
 	public static RatingBar valPuntuacion;
@@ -45,7 +46,8 @@ public class Comentario extends Activity {
 	public static ImageView insertarComentario;
 	private static ControllerResultados servioSoapController;
 	static ArrayAdapter<String> adaptador;
-	private ActionBar action;
+	private android.support.v7.app.ActionBar action;
+	private static String[] puntuacionesUtilizadas;
 
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@SuppressLint("NewApi")
@@ -53,10 +55,10 @@ public class Comentario extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comentario);
-		
+
 		Comentario.listaComentario = (ListView) findViewById(R.id.listView11);
 		ComunicadorGeneral.setActividad(this);
-		action = getActionBar();
+		action = getSupportActionBar();
 		action.setTitle("Resultado");
 
 		TareaWSConsultarPuntuacion t = new TareaWSConsultarPuntuacion();
@@ -88,16 +90,24 @@ public class Comentario extends Activity {
 				if ((int) Comentario.valPuntuacion.getRating() == 0
 						|| Comentario.comentario.getText().toString()
 								.equals("")) {
-					mensajeAlerta("Por favor Ingrese tanto comentario, como puntuación");
+					mensajeAlerta("Por favor Ingrese tanto comentario, como puntuaci—n");
 
 				} else {
 
 					TareaWSInsertarPuntuacion t = new TareaWSInsertarPuntuacion();
 					t.execute();
-					//finish();
-					Toast.makeText(Comentario.this, "Comentario Enviado", 3).show();
+					// finish();
+					Toast.makeText(Comentario.this, "Comentario Enviado", 3)
+							.show();
 					Comentario.valPuntuacion.setEnabled(false);
 					Comentario.comentario.setEnabled(false);
+					adaptador = new ArrayAdapter<String>(ComunicadorGeneral
+							.getActividad(),
+							R.layout.contenido_seleccionar_inmueble_venta,
+							updatePuntuaciones(puntuacionesUtilizadas,
+									comentario.getText().toString()));
+					listaComentario.setAdapter(adaptador);
+
 				}
 
 			}
@@ -109,23 +119,35 @@ public class Comentario extends Activity {
 					@Override
 					public void onRatingChanged(RatingBar ratingBar,
 							float rating, boolean fromUser) {
-						//Comentario.valPuntuacion.setEnabled(false);
+						// Comentario.valPuntuacion.setEnabled(false);
 
 					}
 				});
 	}
 
+	public String[] updatePuntuaciones(String[] puntuaciones, String s) {
+		String[] x = new String[puntuaciones.length + 1];
+		for (int i = 0; i < x.length - 1; i++) {
+			x[i] = puntuaciones[i];
+		}
+		x[x.length - 1] = s;
+		return x;
+	}
+
 	public static void asignaAdpatador(String[] puntuacionesFinal) {
-		if(puntuacionesFinal.length == 0){
+		if (puntuacionesFinal.length == 0) {
 			puntuacionesFinal = new String[1];
 			puntuacionesFinal[0] = "No hay comentarios para este inmueble";
-			
-			adaptador = new ArrayAdapter<String>(ComunicadorGeneral.getActividad(),
+
+			adaptador = new ArrayAdapter<String>(
+					ComunicadorGeneral.getActividad(),
 					android.R.layout.simple_list_item_1, puntuacionesFinal);
-		}else {
-			adaptador = new ArrayAdapter<String>(ComunicadorGeneral.getActividad(),
+		} else {
+			adaptador = new ArrayAdapter<String>(
+					ComunicadorGeneral.getActividad(),
 					android.R.layout.simple_list_item_1, puntuacionesFinal);
 		}
+		puntuacionesUtilizadas = puntuacionesFinal;
 		listaComentario.setAdapter(adaptador);
 	}
 
@@ -142,10 +164,10 @@ public class Comentario extends Activity {
 				android.R.layout.simple_list_item_1, c);
 		listaComentario.setAdapter(adaptador);
 	}
-	
-		public void mensajeAlerta(String mensaje) {
+
+	public void mensajeAlerta(String mensaje) {
 		AlertDialog.Builder alerta = new AlertDialog.Builder(Comentario.this);
-		alerta.setTitle("Error");
+		alerta.setTitle("Erroxr");
 		alerta.setMessage(mensaje);
 		alerta.setIcon(R.drawable.icono);
 
@@ -160,8 +182,5 @@ public class Comentario extends Activity {
 				});
 		alerta.show();
 	}
-		
-	
-	
 
 }

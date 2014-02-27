@@ -40,6 +40,7 @@ public class ServicioImagenes extends AsyncTask<String, Integer, Boolean> {
 		progressDialog = new ProgressDialog(ComunicadorGeneral.getActividad());
 		progressDialog
 				.setMessage("La Carga de imagenes puede tardar, toque la pantalla para continuar navegando.");
+		progressDialog.setCancelable(true);
 
 	}
 
