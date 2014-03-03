@@ -1,5 +1,6 @@
 package co.gov.dps.inmovic.presentacion.vistas.busqueda;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.annotation.SuppressLint;
@@ -28,7 +29,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import co.gov.dps.inmovic.dominio.controladores.ControllerBusqueda;
 import co.gov.dps.inmovic.dominio.controladores.ComunicadorGeneral;
+import co.gov.dps.inmovic.dominio.controladores.ControllerDestacados;
+import co.gov.dps.inmovic.dominio.controladores.ControllerMapa;
 import co.gov.dps.inmovic.dominio.entidades.BienInmobiliario;
+import co.gov.dps.inmovic.presentacion.actividades.destacados.Maps;
 import co.gov.dps.inmovic.presentacion.actividades.destacados.R;
 import co.gov.dps.inmovic.presentacion.vistas.destacados.DestacadoUI;
 import co.gov.dps.inmovic.presentacion.vistas.destacados.MensajeAdvertencia;
@@ -587,6 +591,25 @@ public class Busqueda extends ActionBarActivity {
 						}
 					});
 
+			// se agrega un boton para mostras los resultados en un mapa
+			builderSingle.setNeutralButton("Ubicar",
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+
+							ControllerMapa
+									.setLi(listaResultadosBienesInmobiliarios);
+
+							Intent dos = new Intent(controladorBusqueda
+									.devolverActividadEnComunicadorGeneral(),
+									Maps.class);
+							controladorBusqueda
+									.devolverActividadEnComunicadorGeneral()
+									.startActivity(dos);
+						}
+					});
+
 			// se anade el metodo que se ejecuta cuando un bien de la lista de
 			// los resultados es seleccionado para ampliar su informacion
 			builderSingle.setAdapter(arrayAdapter,
@@ -676,6 +699,7 @@ public class Busqueda extends ActionBarActivity {
 	protected void onRestoreInstanceState(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onRestoreInstanceState(savedInstanceState);
+
 		controladorBusqueda.establerActividadEnComunicadorGeneral(this);
 		if (controladorBusqueda.getLlamadas() == 1) {
 			if (controladorBusqueda.verificarOpcionesBusquedaSeleccionadas() != false) {
@@ -693,6 +717,7 @@ public class Busqueda extends ActionBarActivity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
+		controladorBusqueda.establerActividadEnComunicadorGeneral(this);
 		if (controladorBusqueda.getLlamadas() == 1) {
 			if (controladorBusqueda.verificarOpcionesBusquedaSeleccionadas() != false) {
 				// Se ordena al controlador crear una lista ligada con las

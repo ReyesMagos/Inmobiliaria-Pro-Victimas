@@ -49,7 +49,7 @@ public class ControllerDestacados {
 		if (ComunicadorGeneral.Visitados != null) {
 			devuelveBienesDestacados();
 		} else {
-		
+
 			String r = Storage.readJSON(1);
 
 			// si el String es nulo esto quiere decir que no hay archivos, por
@@ -303,7 +303,7 @@ public class ControllerDestacados {
 
 	public String compruebaInformacionFaltante(String s) {
 		if (s == null) {
-			return "Sin Información";
+			return "Sin Informaci—n";
 		} else if (s.length() <= 1) {
 			return "Sin Información";
 		}

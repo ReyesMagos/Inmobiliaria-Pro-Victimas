@@ -73,6 +73,7 @@ public class ServicioImagenes extends AsyncTask<String, Integer, Boolean> {
 			int cont = 0;
 			int i = 0;
 			bmp = new Bitmap[urls.length];
+
 			for (String s : urls) {
 				if (URLUtil.isValidUrl(s)) {
 					url7 = new URL(s);

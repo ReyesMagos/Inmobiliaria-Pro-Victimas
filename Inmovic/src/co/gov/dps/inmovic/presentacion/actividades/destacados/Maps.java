@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
+import co.gov.dps.inmovic.dominio.controladores.ComunicadorGeneral;
 import co.gov.dps.inmovic.dominio.controladores.ControllerMapa;
 import co.gov.dps.inmovic.dominio.entidades.BienInmobiliario;
 import co.gov.dps.inmovic.servicio.googlemap.MapaEscenario;
@@ -27,22 +27,28 @@ import com.google.android.gms.maps.model.Marker;
 public class Maps extends android.support.v4.app.FragmentActivity {
 
 	private GoogleMap mapa = null;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_maps);
+		ControllerMapa.setActividad(this);
 		mapa = ((SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map)).getMap();
+				.findFragmentById(R.id.map)).getMap();
 		mapa.setMyLocationEnabled(true);
-		List<BienInmobiliario> inmo= ControllerMapa.getLi();
-	
-	
-		
-		int size=10;
-		if(inmo.size()>5)size=5;
-		for(BienInmobiliario i: inmo){
-			MapaEscenario.ubicarEscenario(mapa, i, size);
+		ControllerMapa.mapear(true);
+		List<BienInmobiliario> inmo = ControllerMapa.getLi();
+
+		int size = 10;
+		if (inmo.size() > 5) {
+			size = 5;
+			for (BienInmobiliario i : inmo) {
+				MapaEscenario.ubicarEscenarios(mapa, i, size);
+			}
+		} else {
+
+			MapaEscenario.ubicarEscenario(mapa, inmo.get(0), size);
+
 		}
 	}
 

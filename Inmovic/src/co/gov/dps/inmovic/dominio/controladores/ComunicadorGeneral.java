@@ -1,8 +1,11 @@
 package co.gov.dps.inmovic.dominio.controladores;
 
+import java.util.List;
+
 import co.gov.dps.inmovic.dominio.entidades.BienALaVenta;
 import co.gov.dps.inmovic.dominio.entidades.BienInmobiliario;
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.view.View;
 
 public class ComunicadorGeneral {
@@ -16,29 +19,41 @@ public class ComunicadorGeneral {
 	public static boolean haydatosminimos;
 	public static boolean fromDestacados;
 	public static int llamadas;
+	public static List<Bitmap> listaImagenes;
 
 	public static int llamada2;
-	
-	
+
+	public static boolean mapeados;
+
+	public static boolean isMapeados() {
+		return mapeados;
+	}
+
+	public static void setMapeados(boolean mapeados) {
+		ComunicadorGeneral.mapeados = mapeados;
+	}
+
+	public static List<Bitmap> getListaImagenes() {
+		return listaImagenes;
+	}
+
+	public static void setListaImagenes(List<Bitmap> listaImagenes) {
+		ComunicadorGeneral.listaImagenes = listaImagenes;
+	}
+
 	public static View imagen;
 
 	public static View getImagen() {
 		return imagen;
 	}
-	
-	
 
 	public static int getLlamada2() {
 		return llamada2;
 	}
 
-
-
 	public static void setLlamada2(int llam2) {
 		llamada2 = llam2;
 	}
-
-
 
 	public static int getLlamadas() {
 		return llamadas;

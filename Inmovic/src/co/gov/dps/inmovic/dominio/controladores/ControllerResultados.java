@@ -58,6 +58,10 @@ public class ControllerResultados {
 		return ComunicadorGeneral.getActividad();
 
 	}
+	
+	public boolean verifyMapeando(){
+		return ComunicadorGeneral.isMapeados();
+	}
 
 	public void setResultadoActivity(Activity A) {
 		ComunicadorGeneral.setActividad(A);

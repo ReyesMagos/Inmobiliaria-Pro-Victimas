@@ -85,6 +85,7 @@ public class Resultados extends ActionBarActivity {
 	static Intent i2;
 	private android.support.v7.app.ActionBar action;
 	public static String inserto = "si";
+	public static boolean mapeados;
 
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@SuppressLint("NewApi")
@@ -104,7 +105,12 @@ public class Resultados extends ActionBarActivity {
 			if (controladorResultado.isLLamadoDesdeDestacados()) {
 				action.setTitle("Destacados");
 			} else {
-				action.setTitle("Busqueda");
+				if (controladorResultado.verifyMapeando()) {
+					action.setTitle("Mapa");
+					mapeados = true;
+				} else {
+					action.setTitle("Busqueda");
+				}
 			}
 			CargaElementosLayout();
 
@@ -124,12 +130,13 @@ public class Resultados extends ActionBarActivity {
 
 	public void btnCLickCompartirBienALaVenta(View v) {
 		RedSocial compartir = new RedSocial();
-		compartir.compartirRedSocial(this, organizeDescription(ComunicadorGeneral
-				.getBienALaVentaAMostrar().getDescripcion())
-				+ " esta disponilbe para comprar.\n "
-				+ "Se encuentra ubicado en:  "
-				+ ComunicadorGeneral.getBienALaVentaAMostrar().getUbicacion()
-				+ " @UnidadVictimas ");
+		compartir.compartirRedSocial(this,
+				organizeDescription(ComunicadorGeneral
+						.getBienALaVentaAMostrar().getDescripcion())
+						+ " esta disponilbe para comprar.\n "
+						+ "Se encuentra ubicado en:  "
+						+ ComunicadorGeneral.getBienALaVentaAMostrar()
+								.getUbicacion() + " @UnidadVictimas ");
 	}
 
 	public void btnCLickCompartirBienInmueble(View v) {
@@ -692,13 +699,17 @@ public class Resultados extends ActionBarActivity {
 			// acitvidad
 
 			Intent upIntent;
-			if (controladorResultado.getOpcionResultados() == 1) {
+			if (mapeados) {
+				upIntent = new Intent(this, Maps.class);
+				mapeados = false;
+			} else if (controladorResultado.getOpcionResultados() == 1) {
 				upIntent = new Intent(this, Busqueda.class);
 			} else {
 				upIntent = new Intent(this, Busqueda2.class);
 				controladorResultado.llamarDesdeDestacados(false);
 
 			}
+
 			if (NavUtils.shouldUpRecreateTask(this, upIntent)) {
 				android.support.v4.app.TaskStackBuilder.from(this)
 						.addNextIntent(upIntent).startActivities();
