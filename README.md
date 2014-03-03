@@ -8,6 +8,9 @@ Versión del IDE utilizado en la aplicación:
   - Android Developers Tools (Build: v22.3.0-887826)
   
 Desarrolladores:
+
   -Oscar Gallón
+  
   -Yefry Alexis Calderón 
+  
   -Felipe Correa González
