@@ -37,9 +37,10 @@
 
                 <RatingBar
                     android:id="@+id/ratingBar1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="245dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
+                   
                     android:layout_alignParentTop="true"
                     android:visibility="invisible" />
 
@@ -65,26 +66,32 @@
                             android:visibility="invisible" />
                     </LinearLayout>
                 </ScrollView>
-
-                <Button
-                    android:id="@+id/buttonactividad"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_toLeftOf="@+id/imageView1"
-                    android:text="Enviar"
-                    android:visibility="invisible" />
-
-                <ImageView
-                    android:id="@+id/imageView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_toRightOf="@+id/ratingBar1"
-                    android:src="@drawable/comentar_icono" />
             </RelativeLayout>
-
         </LinearLayout>
     </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="833.80"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="142dp"
+            android:layout_height="156dp"
+            android:layout_gravity="center"
+            android:src="@drawable/comentar_icono" />
+
+        <Button
+            android:id="@+id/buttonactividad"
+            android:layout_width="131dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            android:text="Enviar"
+            android:visibility="invisible" />
+
+    </LinearLayout>
 
 </LinearLayout>

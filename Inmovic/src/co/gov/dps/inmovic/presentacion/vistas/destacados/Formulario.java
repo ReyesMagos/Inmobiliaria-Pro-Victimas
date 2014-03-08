@@ -1,5 +1,6 @@
 package co.gov.dps.inmovic.presentacion.vistas.destacados;
 
+import co.gov.dps.inmovic.dominio.controladores.ComunicadorGeneral;
 import co.gov.dps.inmovic.dominio.controladores.ControllerFormulario;
 import co.gov.dps.inmovic.presentacion.actividades.destacados.R;
 
@@ -41,11 +42,13 @@ public class Formulario extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.formulario_inscripcion);
+		ComunicadorGeneral.setFormOrComen(true);
 		action = getSupportActionBar();
 		action.setTitle("Resultado");
 		action.setDisplayHomeAsUpEnabled(true);
 		controladorFormulario = new ControllerFormulario();
 		controladorFormulario.setActivityFormulario(this);
+		
 
 		// opcionesDoc = (Spinner) findViewById(R.id.spinner1);
 		this.nombre = (EditText) findViewById(R.id.editText1);

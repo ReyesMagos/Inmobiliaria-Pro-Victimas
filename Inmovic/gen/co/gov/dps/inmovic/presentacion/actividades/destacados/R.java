@@ -1211,8 +1211,7 @@ containing a value of this type.
     public static final class id {
         public static final int AbsoluteLayout1=0x7f06006f;
         public static final int LinearLayout1=0x7f06004d;
-        public static final int RelativeLayout1=0x7f060068;
-        public static final int ScrollView1=0x7f06006c;
+        public static final int RelativeLayout1=0x7f06006c;
         public static final int Spinner01=0x7f0600c2;
         public static final int acercade=0x7f0600d3;
         public static final int action_bar=0x7f06001f;
@@ -1236,7 +1235,7 @@ containing a value of this type.
         public static final int btnComentario=0x7f060091;
         public static final int btnEnviar=0x7f0600ce;
         public static final int btnMostar=0x7f06005f;
-        public static final int buttonactividad=0x7f06006b;
+        public static final int buttonactividad=0x7f06006a;
         public static final int canon=0x7f0600a9;
         public static final int checkbox=0x7f060030;
         public static final int collapseActionView=0x7f060011;
@@ -1247,7 +1246,7 @@ containing a value of this type.
         public static final int dialog=0x7f060012;
         public static final int disableHome=0x7f06000c;
         public static final int dropdown=0x7f060013;
-        public static final int editText1=0x7f06006a;
+        public static final int editText1=0x7f060069;
         public static final int editText2=0x7f0600ca;
         public static final int editText3=0x7f0600c8;
         public static final int editText4=0x7f0600cb;
@@ -1337,10 +1336,11 @@ containing a value of this type.
         public static final int progress_horizontal=0x7f06001c;
         public static final int progressbar=0x7f0600a0;
         public static final int radio=0x7f060032;
-        public static final int ratingBar1=0x7f060069;
+        public static final int ratingBar1=0x7f060068;
         public static final int satellite=0x7f060002;
         public static final int scrollView1=0x7f06004a;
         public static final int scrollView2=0x7f060067;
+        public static final int scrollView3=0x7f06006b;
         public static final int search_badge=0x7f060035;
         public static final int search_bar=0x7f060034;
         public static final int search_button=0x7f060036;

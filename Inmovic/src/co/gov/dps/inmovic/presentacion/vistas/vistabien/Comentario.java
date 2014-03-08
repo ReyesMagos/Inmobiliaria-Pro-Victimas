@@ -13,6 +13,7 @@ import co.gov.dps.inmovic.dominio.controladores.ServicioSoapController;
 import co.gov.dps.inmovic.presentacion.actividades.destacados.R;
 import co.gov.dps.inmovic.presentacion.actividades.destacados.R.layout;
 import co.gov.dps.inmovic.presentacion.actividades.destacados.R.menu;
+import co.gov.dps.inmovic.presentacion.vistas.busqueda.Busqueda;
 import co.gov.dps.inmovic.servicio.servicioSOAP.ServicioCrearPuntuacion;
 import co.gov.dps.inmovic.servicio.servicioweb.TareaWSConsultarPuntuacion;
 import co.gov.dps.inmovic.servicio.servicioweb.TareaWSInsertarPuntuacion;
@@ -27,6 +28,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -48,6 +50,7 @@ public class Comentario extends ActionBarActivity {
 	static ArrayAdapter<String> adaptador;
 	private android.support.v7.app.ActionBar action;
 	private static String[] puntuacionesUtilizadas;
+	int tamano = puntuacionesUtilizadas.length;
 
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@SuppressLint("NewApi")
@@ -57,6 +60,28 @@ public class Comentario extends ActionBarActivity {
 		setContentView(R.layout.activity_comentario);
 
 		Comentario.listaComentario = (ListView) findViewById(R.id.listView11);
+		Comentario.listaComentario
+				.setOnTouchListener(new ListView.OnTouchListener() {
+					@Override
+					public boolean onTouch(View v, MotionEvent event) {
+						int action = event.getAction();
+						switch (action) {
+						case MotionEvent.ACTION_DOWN:
+							v.getParent().requestDisallowInterceptTouchEvent(
+									true);
+							break;
+
+						case MotionEvent.ACTION_UP:
+							v.getParent().requestDisallowInterceptTouchEvent(
+									false);
+							break;
+						}
+
+						v.onTouchEvent(event);
+						return true;
+					}
+
+				});
 		ComunicadorGeneral.setActividad(this);
 		action = getSupportActionBar();
 		action.setTitle("Resultado");
@@ -93,20 +118,31 @@ public class Comentario extends ActionBarActivity {
 					mensajeAlerta("Por favor Ingrese tanto comentario, como puntuaci—n");
 
 				} else {
+					
+					if (Busqueda.inspectConection(Comentario.this)){
+						
+						mensajeAlerta("Necesita conexi—n a Internet para realizar esta acci—n");
+						return;
+						
+					}
 
 					TareaWSInsertarPuntuacion t = new TareaWSInsertarPuntuacion();
 					t.execute();
 					// finish();
 					Toast.makeText(Comentario.this, "Comentario Enviado", 3)
 							.show();
-					Comentario.valPuntuacion.setEnabled(false);
-					Comentario.comentario.setEnabled(false);
+
+					Comentario.valPuntuacion.setRating(0f);
+					Comentario.comentario.setText("");
+					String c = Comentario.comentario.getText().toString();
+					tamano = tamano + 1;
 					adaptador = new ArrayAdapter<String>(ComunicadorGeneral
 							.getActividad(),
-							R.layout.contenido_seleccionar_inmueble_venta,
-							updatePuntuaciones(puntuacionesUtilizadas,
-									comentario.getText().toString()));
+							android.R.layout.simple_list_item_1,
+							updatePuntuaciones(puntuacionesUtilizadas,c));
 					listaComentario.setAdapter(adaptador);
+					
+					
 
 				}
 
@@ -126,7 +162,7 @@ public class Comentario extends ActionBarActivity {
 	}
 
 	public String[] updatePuntuaciones(String[] puntuaciones, String s) {
-		String[] x = new String[puntuaciones.length + 1];
+		String[] x = new String[tamano];
 		for (int i = 0; i < x.length - 1; i++) {
 			x[i] = puntuaciones[i];
 		}
@@ -167,7 +203,7 @@ public class Comentario extends ActionBarActivity {
 
 	public void mensajeAlerta(String mensaje) {
 		AlertDialog.Builder alerta = new AlertDialog.Builder(Comentario.this);
-		alerta.setTitle("Erroxr");
+		alerta.setTitle("Error");
 		alerta.setMessage(mensaje);
 		alerta.setIcon(R.drawable.icono);
 

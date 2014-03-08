@@ -20,8 +20,18 @@ public class ComunicadorGeneral {
 	public static boolean fromDestacados;
 	public static int llamadas;
 	public static List<Bitmap> listaImagenes;
+	public static boolean formOrComen;
 
 	public static int llamada2;
+
+	
+	public static boolean isFormOrComen() {
+		return formOrComen;
+	}
+
+	public static void setFormOrComen(boolean formOrComen) {
+		ComunicadorGeneral.formOrComen = formOrComen;
+	}
 
 	public static boolean mapeados;
 

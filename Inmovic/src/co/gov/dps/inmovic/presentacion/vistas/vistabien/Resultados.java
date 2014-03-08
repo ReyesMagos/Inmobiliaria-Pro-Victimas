@@ -93,6 +93,7 @@ public class Resultados extends ActionBarActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		ComunicadorGeneral.setActividad(this);
+		
 		action = ((Resultados) ComunicadorGeneral.getActividad())
 				.getSupportActionBar();
 
@@ -678,12 +679,14 @@ public class Resultados extends ActionBarActivity {
 		// TODO Auto-generated method stub
 		super.onRestoreInstanceState(savedInstanceState);
 		controladorResultado.setResultadoActivity(this);
+	
 	}
 
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
+		
 		controladorResultado.setResultadoActivity(this);
 	}
 

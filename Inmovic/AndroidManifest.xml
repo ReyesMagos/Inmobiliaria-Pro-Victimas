@@ -110,6 +110,7 @@
         <activity
             android:name="co.gov.dps.inmovic.presentacion.vistas.busqueda.Busqueda2"
             android:label="@string/title_activity_busqueda2"
+            android:screenOrientation="portrait" >
             android:parentActivityName="co.gov.dps.inmovic.presentacion.vistas.busqueda.SeleccionarTipoBusqueda" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

@@ -46,8 +46,9 @@ public class ServicioImagenes extends AsyncTask<String, Integer, Boolean> {
 
 	@Override
 	protected void onPreExecute() {
-
-		progressDialog.show();
+		if (!ComunicadorGeneral.isFormOrComen()) {
+			progressDialog.show();
+		}
 
 	}
 
@@ -166,8 +167,11 @@ public class ServicioImagenes extends AsyncTask<String, Integer, Boolean> {
 			dialog.show();
 
 		}
-
-		progressDialog.dismiss();
+		if (!ComunicadorGeneral.isFormOrComen()) {
+			progressDialog.dismiss();
+		} else {
+			ComunicadorGeneral.setFormOrComen(false);
+		}
 
 	}
 
