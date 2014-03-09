@@ -136,7 +136,7 @@ public class DestacadoUI extends ActionBarActivity {
 				RedSocial compartir = new RedSocial();
 				compartir.compartirRedSocial(this,
 						"Este bien: " + d.getNombre()
-								+ " esta disponilbe para arrendar. \n"
+								+ " esta disponible para arrendar. \n"
 								+ "Se encuentra ubicado en: " + d.getUbicacion()
 								+ "@UnidadVictimas ");
 			}

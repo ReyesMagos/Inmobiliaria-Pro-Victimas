@@ -40,8 +40,8 @@ public class Maps extends android.support.v4.app.FragmentActivity {
 		List<BienInmobiliario> inmo = ControllerMapa.getLi();
 
 		int size = 10;
-		if (inmo.size() > 5) {
-			size = 5;
+		if (inmo.size() > 1) {
+			size = inmo.size();
 			for (BienInmobiliario i : inmo) {
 				MapaEscenario.ubicarEscenarios(mapa, i, size);
 			}

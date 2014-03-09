@@ -123,12 +123,12 @@ public class Busqueda2 extends ActionBarActivity {
 		// se crea un adaptador con las opciones cargadas en el vector
 		adaptadorTipoBien2 = new ArrayAdapter<String>(
 				controladorBusqueda.devolverActividadEnComunicadorGeneral(),
-				android.R.layout.simple_list_item_1, arregloTipoDeBien);
+				R.layout.contenido_listas_personalizadas, arregloTipoDeBien);
 
 		// se le asigana al adaptador la manera en que sera la lista que
 		// contiene cada uno de los elementos que esta mostrara
 		adaptadorTipoBien2
-				.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
+				.setDropDownViewResource(R.layout.contenido_listas_personalizadas);
 
 		// se le asigana al spinner el adaptador
 		spTipoBien2.setAdapter(adaptadorTipoBien2);
@@ -185,12 +185,12 @@ public class Busqueda2 extends ActionBarActivity {
 		// se crear un adaptador con los valores que contenera el spinner
 		adaptadorValor2 = new ArrayAdapter<String>(
 				controladorBusqueda.devolverActividadEnComunicadorGeneral(),
-				android.R.layout.simple_list_item_1, arregloValor2);
+				R.layout.contenido_listas_personalizadas, arregloValor2);
 
 		// se le asigana al adaptador la manera en que sera la lista que
 		// contiene cada uno de los elementos que esta mostrara
 		adaptadorValor2
-				.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
+				.setDropDownViewResource(R.layout.contenido_listas_personalizadas);
 
 		// se le asigana al spinner el adaptador
 		spValor2.setAdapter(adaptadorValor2);
@@ -242,12 +242,12 @@ public class Busqueda2 extends ActionBarActivity {
 		// se crear un adaptador con los valores que contenera el spinner
 		adaptadorUbicacion = new ArrayAdapter<String>(
 				controladorBusqueda.devolverActividadEnComunicadorGeneral(),
-				android.R.layout.simple_list_item_1, arregloUbicacion);
+				R.layout.contenido_listas_personalizadas, arregloUbicacion);
 
 		// se le asigana al adaptador la manera en que sera la lista que
 		// contiene cada uno de los elementos que esta mostrara
 		adaptadorUbicacion
-				.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
+				.setDropDownViewResource(R.layout.contenido_listas_personalizadas);
 
 		// se le asigana al spinner el adaptador
 		spUbicacion.setAdapter(adaptadorUbicacion);
@@ -268,7 +268,7 @@ public class Busqueda2 extends ActionBarActivity {
 				if (arg2 != 0) {
 					controladorBusqueda.enviarUbicacionSeleccionado(arg0
 							.getAdapter().getItem(arg2).toString());
-					Log.i("Ubicacion seleccionado",
+					Log.i("Ubicaci—n seleccionado",
 							arg0.getAdapter().getItem(arg2).toString());
 				} else {
 					controladorBusqueda.enviarUbicacionSeleccionado(null);
@@ -326,7 +326,7 @@ public class Busqueda2 extends ActionBarActivity {
 		// ningun Resultado
 		if (b1.size() == 0) {
 			showAlertMessage(
-					"Los criterios de busqueda no han arrojado resultados,  por favor verifique y vuelva a intentarlo",
+					"Los criterios de bœsqueda no han arrojado resultados,  por favor verifique y vuelva a intentarlo",
 					"Sin Resultados");
 			Log.i("Resultados", " nulo");
 			Log.i("Resultados", " nulo");
@@ -345,7 +345,7 @@ public class Busqueda2 extends ActionBarActivity {
 			// se crea un adaptador para la vista que se mostrara
 			final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
 					controladorBusqueda.devolverActividadEnComunicadorGeneral(),
-					android.R.layout.select_dialog_singlechoice);
+					R.layout.contenido_listas_personalizadas);
 
 			// se borra el adaptador en caso de que este tenga algun elemento
 			// previo

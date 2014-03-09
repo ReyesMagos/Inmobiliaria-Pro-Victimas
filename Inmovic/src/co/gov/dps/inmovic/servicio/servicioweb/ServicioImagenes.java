@@ -150,7 +150,7 @@ public class ServicioImagenes extends AsyncTask<String, Integer, Boolean> {
 				builder.setMessage("Imagen no disponible");
 
 			} else {
-				builder.setMessage("Lo sentimos ocurrio un problema al cargar las imagenes, revise su conexion a internet e intente de nuevo");
+				builder.setMessage("Lo sentimos ocurrio un problema al cargar las imagenes, revise su conexi—n a internet e intente de nuevo");
 			}
 
 			builder.setPositiveButton(R.string.btn_aceptar,

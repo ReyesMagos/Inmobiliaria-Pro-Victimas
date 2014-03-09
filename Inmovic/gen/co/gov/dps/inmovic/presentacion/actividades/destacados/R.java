@@ -1213,7 +1213,7 @@ containing a value of this type.
         public static final int LinearLayout1=0x7f06004d;
         public static final int RelativeLayout1=0x7f06006c;
         public static final int Spinner01=0x7f0600c2;
-        public static final int acercade=0x7f0600d3;
+        public static final int acercade=0x7f0600d2;
         public static final int action_bar=0x7f06001f;
         public static final int action_bar_activity_content=0x7f060018;
         public static final int action_bar_container=0x7f06001e;
@@ -1225,8 +1225,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f060019;
         public static final int action_menu_presenter=0x7f06001a;
         public static final int action_mode_close_button=0x7f060027;
-        public static final int action_search=0x7f0600d2;
-        public static final int action_settings=0x7f0600d1;
+        public static final int action_search=0x7f0600d1;
         public static final int activity_chooser_view_content=0x7f060028;
         public static final int always=0x7f06000f;
         public static final int beginning=0x7f060014;
@@ -1306,8 +1305,8 @@ containing a value of this type.
         public static final int imv5=0x7f060098;
         public static final int imv6=0x7f060099;
         public static final int imv7=0x7f06009a;
-        public static final int item1=0x7f0600d4;
-        public static final int item2=0x7f0600d5;
+        public static final int item1=0x7f0600d3;
+        public static final int item2=0x7f0600d4;
         public static final int lblDepartamento=0x7f06004f;
         public static final int lblMunicipio=0x7f060051;
         public static final int lblTipoBien=0x7f060053;

@@ -158,7 +158,7 @@ public class ServicioRest extends AsyncTask<String, Integer, Boolean> {
 
 				} else {
 					controladorServicios
-							.showDestacadosMessage("Error falta de conexion a internet");
+							.showDestacadosMessage("Error falta de conexi—n a internet");
 				}
 			} else if (opcion.toLowerCase().equals("venta")) {
 

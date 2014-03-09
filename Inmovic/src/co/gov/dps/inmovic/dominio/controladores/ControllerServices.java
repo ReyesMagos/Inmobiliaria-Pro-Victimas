@@ -37,7 +37,7 @@ public class ControllerServices {
 	}
 
 	public void showBusquedaErrorMessages(String s) {
-		Busqueda.showErrorMessage(s, "faltanDatos", 2);
+		Busqueda.showErrorMessage(s, "faltan Datos", 2);
 
 	}
 

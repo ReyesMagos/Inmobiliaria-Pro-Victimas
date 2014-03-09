@@ -55,7 +55,7 @@ public class MensajeAdvertencia {
 					.setMessage(
 							"Con esta aplicaci—n se quiere crear condiciones de prosperidad en la poblaci—n vulnerable, " +
 							"contribuir a la reconciliaci—n de los Colombianos y promover la integraci—n regional." + "\n" + 
-							"Todos los bienes aqu’ mostrados pertenecen al gobierno de la repœblica de Colombia, e integran " +
+							"Todos los bienes aqu’ mostrados pertenecen al Gobierno de la Repœblica de Colombia, e integran " +
 							"a la Unidad para la Atenci—n y Reparaci—n Integral a las V’ctimas.")
 					.setPositiveButton("Comprendo",
 							new Dialog.OnClickListener() {

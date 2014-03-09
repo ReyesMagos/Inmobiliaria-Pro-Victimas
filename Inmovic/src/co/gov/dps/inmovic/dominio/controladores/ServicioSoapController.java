@@ -73,7 +73,7 @@ public class ServicioSoapController {
 		for (int i = 0; i < ServicioConsultaPuntuacion.puntuaciones.length; i++) {
 			puntuacionesFinal[i] = ServicioConsultaPuntuacion.puntuaciones[i]
 					.getComentario()
-					+ "\nPuntuación: "
+					+ "\nPuntuaci—n: "
 					+ ServicioConsultaPuntuacion.puntuaciones[i]
 							.getPuntuacion();
 

@@ -317,7 +317,7 @@ int id AbsoluteLayout1 0x7f06006f
 int id LinearLayout1 0x7f06004d
 int id RelativeLayout1 0x7f06006c
 int id Spinner01 0x7f0600c2
-int id acercade 0x7f0600d3
+int id acercade 0x7f0600d2
 int id action_bar 0x7f06001f
 int id action_bar_activity_content 0x7f060018
 int id action_bar_container 0x7f06001e
@@ -329,8 +329,7 @@ int id action_context_bar 0x7f060020
 int id action_menu_divider 0x7f060019
 int id action_menu_presenter 0x7f06001a
 int id action_mode_close_button 0x7f060027
-int id action_search 0x7f0600d2
-int id action_settings 0x7f0600d1
+int id action_search 0x7f0600d1
 int id activity_chooser_view_content 0x7f060028
 int id always 0x7f06000f
 int id beginning 0x7f060014
@@ -410,8 +409,8 @@ int id imv4 0x7f060097
 int id imv5 0x7f060098
 int id imv6 0x7f060099
 int id imv7 0x7f06009a
-int id item1 0x7f0600d4
-int id item2 0x7f0600d5
+int id item1 0x7f0600d3
+int id item2 0x7f0600d4
 int id lblDepartamento 0x7f06004f
 int id lblMunicipio 0x7f060051
 int id lblTipoBien 0x7f060053

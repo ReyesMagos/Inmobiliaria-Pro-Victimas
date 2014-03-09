@@ -134,7 +134,7 @@ public class Resultados extends ActionBarActivity {
 		compartir.compartirRedSocial(this,
 				organizeDescription(ComunicadorGeneral
 						.getBienALaVentaAMostrar().getDescripcion())
-						+ " esta disponilbe para comprar.\n "
+						+ " esta disponible para comprar.\n "
 						+ "Se encuentra ubicado en:  "
 						+ ComunicadorGeneral.getBienALaVentaAMostrar()
 								.getUbicacion() + " @UnidadVictimas ");
@@ -144,7 +144,7 @@ public class Resultados extends ActionBarActivity {
 		RedSocial compartir = new RedSocial();
 		compartir.compartirRedSocial(this, ComunicadorGeneral.getBienAMostrar()
 				.getNombredelbien()
-				+ " esta disponilbe para arrendar. \n"
+				+ " esta disponible para arrendar. \n"
 				+ "Se encuentra ubicado en:  "
 				+ ComunicadorGeneral.getBienAMostrar().getDepartamento()
 				+ "-"

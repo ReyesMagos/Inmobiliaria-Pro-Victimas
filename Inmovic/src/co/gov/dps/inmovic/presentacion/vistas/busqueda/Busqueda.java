@@ -145,7 +145,7 @@ public class Busqueda extends ActionBarActivity {
 		// Se inicializa un adaptador para el spinner con un arreglo que
 		// contiene los departamentos posibles a seleccionar
 		adaptadorDepartamento = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, arregloDepartamento);
+				R.layout.contenido_listas_personalizadas, arregloDepartamento);
 
 		// Se anade el layout para mostrar las opciones y la forma en que este
 		// se desplegara
@@ -186,7 +186,7 @@ public class Busqueda extends ActionBarActivity {
 					// haber municipio
 					adaptadorMunicipio = new ArrayAdapter<String>(
 							ComunicadorGeneral.getActividad(),
-							android.R.layout.simple_list_item_1,
+							R.layout.contenido_listas_personalizadas,
 							new String[] { "Seleccione" });
 
 					// se asigna el adaptador sin opciones a el spinner de los
@@ -218,7 +218,7 @@ public class Busqueda extends ActionBarActivity {
 		// contiene los municipios posibles a seleccionar
 		adaptadorMunicipio = new ArrayAdapter<String>(
 				ComunicadorGeneral.getActividad(),
-				android.R.layout.simple_list_item_1, arregloMunicipios);
+				R.layout.contenido_listas_personalizadas, arregloMunicipios);
 
 		// Se anade el layout para mostrar las opciones y la forma en que este
 		// se desplegara
@@ -265,7 +265,7 @@ public class Busqueda extends ActionBarActivity {
 	private void cargarElementosSpinnerTipoDeBien() {
 		arregloTipoDeBien = controladorBusqueda.gestionaCargaTipoBien();
 		adaptadorTipoBien = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, arregloTipoDeBien);
+				R.layout.contenido_listas_personalizadas, arregloTipoDeBien);
 		adaptadorTipoBien
 				.setDropDownViewResource(R.layout.contenido_listas_personalizadas);
 		spTipoBien.setAdapter(adaptadorTipoBien);
@@ -305,7 +305,7 @@ public class Busqueda extends ActionBarActivity {
 		arregloTipoDeInmueble = controladorBusqueda
 				.gestionaCargaTipoDeInmueble();
 		adaptadorTipoInmueble = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, arregloTipoDeInmueble);
+				R.layout.contenido_listas_personalizadas, arregloTipoDeInmueble);
 		adaptadorTipoInmueble
 				.setDropDownViewResource(R.layout.contenido_listas_personalizadas);
 		spTipoInmueble.setAdapter(adaptadorTipoInmueble);
@@ -343,7 +343,7 @@ public class Busqueda extends ActionBarActivity {
 	private void cargarElementosSpinnerUsoBien() {
 		arregloUsoBien = controladorBusqueda.gestionaCargaUsoDelBien();
 		adaptadorUsoBien = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, arregloUsoBien);
+				R.layout.contenido_listas_personalizadas, arregloUsoBien);
 		adaptadorUsoBien
 				.setDropDownViewResource(R.layout.contenido_listas_personalizadas);
 		spUsodelBien.setAdapter(adaptadorUsoBien);
@@ -381,7 +381,7 @@ public class Busqueda extends ActionBarActivity {
 	private void cargarElementosNumeroBanos() {
 		arregloNumeroBanos = controladorBusqueda.gestionaCargaNumeroBanos();
 		adaptadorNumBaños = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, arregloNumeroBanos);
+				R.layout.contenido_listas_personalizadas, arregloNumeroBanos);
 		adaptadorNumBaños
 				.setDropDownViewResource(R.layout.contenido_listas_personalizadas);
 		spNumBaños.setAdapter(adaptadorNumBaños);
@@ -394,7 +394,7 @@ public class Busqueda extends ActionBarActivity {
 				if (arg2 != 0) {
 					controladorBusqueda.enviarNumeroBanosSeleccionado(arg0
 							.getAdapter().getItem(arg2).toString());
-					Log.i("Número de Baños Seleccionado", arg0.getAdapter()
+					Log.i("Nœmero de Ba–os Seleccionado", arg0.getAdapter()
 							.getItem(arg2).toString());
 				} else {
 					controladorBusqueda.enviarNumeroBanosSeleccionado(null);
@@ -420,7 +420,7 @@ public class Busqueda extends ActionBarActivity {
 		arregloNumeroHabitaciones = controladorBusqueda
 				.gestionaCargaNumeroHabitaciones();
 		adaptadorNumHabitacion = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, arregloNumeroHabitaciones);
+				R.layout.contenido_listas_personalizadas, arregloNumeroHabitaciones);
 		adaptadorNumHabitacion
 				.setDropDownViewResource(R.layout.contenido_listas_personalizadas);
 		spNumHabitaciones.setAdapter(adaptadorNumHabitacion);
@@ -436,7 +436,7 @@ public class Busqueda extends ActionBarActivity {
 									.enviarNumeroHabitacionesSeleccionado(arg0
 											.getAdapter().getItem(arg2)
 											.toString());
-							Log.i("Número de habitaciones seleccionado", arg0
+							Log.i("Nœmero de habitaciones seleccionado", arg0
 									.getAdapter().getItem(arg2).toString());
 						} else {
 							controladorBusqueda
@@ -463,7 +463,7 @@ public class Busqueda extends ActionBarActivity {
 	private void cargarElementosValor() {
 		arregloValor = controladorBusqueda.gestionaCargaValores();
 		adaptadorValor = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, arregloValor);
+				R.layout.contenido_listas_personalizadas, arregloValor);
 		adaptadorValor
 				.setDropDownViewResource(R.layout.contenido_listas_personalizadas);
 		spValor.setAdapter(adaptadorValor);
@@ -539,7 +539,7 @@ public class Busqueda extends ActionBarActivity {
 		// ingresados por el usario se le informa
 		if (listaResultadosBienesInmobiliarios.size() == 0) {
 			showAlertMessage(
-					"Los criterios de busqueda no han arrojado resultados,  por favor verifique y vuelva a intentarlo",
+					"Los criterios de bœsqueda no han arrojado resultados,  por favor verifique y vuelva a intentarlo",
 					"Sin Resultados");
 			Log.i("Resultados", " nulo");
 		} else {
@@ -557,13 +557,13 @@ public class Busqueda extends ActionBarActivity {
 			builderSingle.setIcon(R.drawable.icono);
 
 			// Se le anade un titulo al alertdialog
-			builderSingle.setTitle("Resultador");
+			builderSingle.setTitle("Resultados");
 
-			// Se carga un adaptador para mostrar los resultados , el cual sera
+			// Se carga un adaptador para mostrar los res   ultados , el cual sera
 			// del tipo listview donde solo sera posible una seleccion
 			final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
 					ComunicadorGeneral.getActividad(),
-					android.R.layout.select_dialog_singlechoice);
+					R.layout.contenido_listas_personalizadas);
 
 			// Se limp“a el adaptador en caso de que halla sido llamado ya en la
 			// ejecucion del programa, esto con el fin de borrar los resultados

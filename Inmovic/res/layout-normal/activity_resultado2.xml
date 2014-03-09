@@ -438,7 +438,7 @@
                     android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:onClick="btnCLickCompartir"
+                    android:onClick="btnCLickCompartirBienALaVenta"
                     android:src="@drawable/compartit" />
             </LinearLayout>
         </LinearLayout>
